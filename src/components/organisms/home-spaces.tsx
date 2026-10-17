@@ -219,7 +219,11 @@ export function HomeSpaces() {
               {visible.map((item) => (
                 <li
                   key={item.id}
-                  className={`w-full shrink-0 px-2 md:w-1/4${visible.length === 1 ? " max-lg:!w-full" : ""}`}
+                  className={
+                    visible.length === 1
+                      ? "w-full shrink-0 px-2 md:w-1/4 max-lg:!w-full"
+                      : "w-full shrink-0 px-2 md:w-1/4"
+                  }
                 >
                   <SpaceCard space={item} />
                 </li>
