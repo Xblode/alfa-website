@@ -49,7 +49,7 @@ export function HomeServices() {
     <section
       data-section="Services"
       aria-labelledby="home-services-title"
-      className="relative isolate z-10 overflow-hidden bg-transparent pt-12 pb-16 text-secondary sm:pt-16 sm:pb-20"
+      className="relative isolate z-10 overflow-hidden bg-transparent pt-12 pb-16 text-secondary sm:pt-16 sm:pb-20 max-lg:px-4"
     >
       <SectionShapes variant="services" />
       <div

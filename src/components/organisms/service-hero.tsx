@@ -13,6 +13,20 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
   const homeLabel = home === "/en" ? "Home" : "Accueil";
   return (
     <section data-section="Hero service" aria-labelledby="service-hero-title" className="bg-hero text-secondary">
+      <div
+        data-name="Visuel"
+        className="relative h-40 w-full overflow-hidden bg-secondary sm:h-52 lg:h-64"
+      >
+        <Image
+          src={page.image.src}
+          alt={page.image.alt}
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
+
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
         <nav aria-label="Fil d'Ariane" data-component="nav" data-name="Fil d'Ariane">
           <ol className="flex flex-wrap items-center gap-2 text-sm">
@@ -25,24 +39,9 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
             <li aria-current="page">{page.title}</li>
           </ol>
         </nav>
-
-        <div
-          data-name="Visuel"
-          className="relative mt-6 aspect-[16/9] overflow-hidden rounded-3xl bg-secondary"
-        >
-          <Image
-            src={page.image.src}
-            alt={page.image.alt}
-            fill
-            preload
-            sizes="(min-width: 72rem) 72rem, 100vw"
-            className="object-cover"
-          />
-        </div>
-
         <h1
           id="service-hero-title"
-          className="mt-8 font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl lg:text-5xl"
+          className="mt-4 font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl lg:text-5xl"
         >
           {page.title}
         </h1>

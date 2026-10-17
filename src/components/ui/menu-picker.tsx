@@ -27,7 +27,7 @@ const focusRing =
   "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 const panelClass =
-  "z-40 mx-auto mt-1 w-[min(48rem,calc(100vw-2rem))] rounded-2xl border border-secondary/10 bg-surface p-4 shadow-lg xl:absolute xl:top-full xl:left-1/2 xl:z-40 xl:mt-3 xl:-translate-x-1/2";
+  "z-40 mx-auto mt-1 w-[min(48rem,calc(100vw-2rem))] rounded-2xl border border-secondary/10 bg-surface p-4 shadow-lg xl:absolute xl:top-full xl:left-1/2 xl:z-40 xl:mt-3 xl:-translate-x-1/2 max-lg:w-full max-lg:max-w-full";
 
 export function MenuPicker(props: MenuPickerProps) {
   const { label, open, onOpenChange, onNavigate } = props;

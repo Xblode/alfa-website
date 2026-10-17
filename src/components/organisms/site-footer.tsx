@@ -60,7 +60,7 @@ export function SiteFooter() {
       className="relative overflow-hidden border-t border-white/10 bg-secondary text-surface"
     >
       <div aria-hidden="true" className="pointer-events-none absolute -top-24 right-1/4 h-48 w-96 rounded-full bg-primary/10 blur-3xl" />
-      <div className="relative px-4 pt-14 pb-10 sm:px-6 lg:pt-16">
+      <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-10 sm:px-6 lg:pt-16">
         <div data-component="grid" className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-8">
           <div className="flex flex-col items-start gap-5 lg:col-span-5">
             <HomeLink className={`group inline-flex items-center ${focusRing}`}>

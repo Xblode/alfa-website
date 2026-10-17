@@ -1,0 +1,2078 @@
+{
+  "takenAt": "2026-10-17",
+  "note": "Working tree including uncommitted home-offers, home-reviews, home-content, en-dictionary.",
+  "baseline": {
+    "1024": {
+      "/": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 7641,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "home-hero-title#1": "1b10go8",
+          "Promesses#2": "j4ep1y",
+          "home-spaces-title#3": "1rhhgke",
+          "home-services-title#4": "j00325",
+          "home-personas-title#5": "l7na63",
+          "home-offers-title#6": "77dea5",
+          "home-instagram-title#7": "2sd96r",
+          "home-articles-title#8": "i2olkb",
+          "home-reviews-title#9": "19ckq0o",
+          "home-faq-title#10": "rplw0u",
+          "home-contact-banner-title#11": "14egwfl",
+          "Pied de page#12": "1e7mec0"
+        }
+      },
+      "/en": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 7410,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "home-hero-title#1": "5l0jrj",
+          "Promesses#2": "1qfc1p6",
+          "home-spaces-title#3": "1ox69v1",
+          "home-services-title#4": "16lwgij",
+          "home-personas-title#5": "1yizxcj",
+          "home-offers-title#6": "1w3lfr5",
+          "home-instagram-title#7": "1yix6x6",
+          "home-articles-title#8": "1exw073",
+          "home-reviews-title#9": "1lk57fe",
+          "home-faq-title#10": "vkk024",
+          "home-contact-banner-title#11": "wxpnhs",
+          "Pied de page#12": "1ldag24"
+        }
+      },
+      "/domiciliation-commerciale": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 5068,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "service-hero-title#1": "fb84xd",
+          "service-what#2": "199c2ga",
+          "service-why#3": "u616vo",
+          "service-solutions#4": "s6bbnk",
+          "service-faq-title#5": "1807uzz",
+          "service-info-title#6": "s317h6",
+          "Promesses#7": "j4ep1y",
+          "Pied de page#8": "1e7mec0"
+        }
+      },
+      "/permanence-telephonique": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 4450,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "service-hero-title#1": "1995va3",
+          "service-what#2": "odfhtb",
+          "service-why#3": "w5aivf",
+          "service-solutions#4": "1hq6ja9",
+          "service-faq-title#5": "gguy7q",
+          "service-info-title#6": "s317h6",
+          "Promesses#7": "j4ep1y",
+          "Pied de page#8": "1e7mec0"
+        }
+      },
+      "/location-de-bureaux": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 4694,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "service-hero-title#1": "1t29yu3",
+          "service-what#2": "r0is3h",
+          "service-why#3": "1aaicex",
+          "service-solutions#4": "1kbltdu",
+          "service-faq-title#5": "fybk41",
+          "service-info-title#6": "s317h6",
+          "Promesses#7": "j4ep1y",
+          "Pied de page#8": "1e7mec0"
+        }
+      },
+      "/salles-de-reunion": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 4070,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "service-hero-title#1": "us2sji",
+          "service-what#2": "th1wpp",
+          "service-why#3": "dc2og1",
+          "service-solutions#4": "1f0mwmh",
+          "service-faq-title#5": "r393bq",
+          "service-info-title#6": "s317h6",
+          "Promesses#7": "j4ep1y",
+          "Pied de page#8": "1e7mec0"
+        }
+      },
+      "/mentions-legales": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 1655,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "HEADER#1": "6z8a8",
+          "SECTION#2": "184hys9",
+          "SECTION#3": "1bvcf9j",
+          "SECTION#4": "1enqh55",
+          "SECTION#5": "gy1nxr",
+          "SECTION#6": "gy1nxr",
+          "Pied de page#7": "1e7mec0"
+        }
+      },
+      "/politique-de-confidentialite": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 2009,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "HEADER#1": "6z8a8",
+          "SECTION#2": "1xdfrir",
+          "SECTION#3": "9lyavl",
+          "SECTION#4": "11qlrnc",
+          "SECTION#5": "gy1nxr",
+          "SECTION#6": "wk29b0",
+          "Pied de page#7": "1e7mec0"
+        }
+      },
+      "/en/domiciliation-commerciale": {
+        "innerWidth": 1024,
+        "clientWidth": 1024,
+        "lg": true,
+        "docH": 4433,
+        "sections": {
+          "HEADER#0": "b5acyo",
+          "service-hero-title#1": "1sqwd26",
+          "service-what#2": "10obfsu",
+          "service-why#3": "1dx2hw",
+          "service-solutions#4": "wmg2eo",
+          "service-faq-title#5": "6ercrp",
+          "service-info-title#6": "egxyzb",
+          "Promesses#7": "1qfc1p6",
+          "Pied de page#8": "1ldag24"
+        }
+      }
+    },
+    "1280": {
+      "/": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 7630,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "home-hero-title#1": "fgum0y",
+          "Promesses#2": "8mczmg",
+          "home-spaces-title#3": "bagwhm",
+          "home-services-title#4": "1owkbna",
+          "home-personas-title#5": "d6ckya",
+          "home-offers-title#6": "1e9kn7k",
+          "home-instagram-title#7": "1ao5sty",
+          "home-articles-title#8": "1kb9ftc",
+          "home-reviews-title#9": "goxx45",
+          "home-faq-title#10": "837tyn",
+          "home-contact-banner-title#11": "39xtus",
+          "Pied de page#12": "w92uex"
+        }
+      },
+      "/en": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 7490,
+        "sections": {
+          "HEADER#0": "1y3s07d",
+          "home-hero-title#1": "4xab5a",
+          "Promesses#2": "10b9hdx",
+          "home-spaces-title#3": "1qae4ox",
+          "home-services-title#4": "v0ey58",
+          "home-personas-title#5": "dyrpkg",
+          "home-offers-title#6": "k38hys",
+          "home-instagram-title#7": "1whfmhr",
+          "home-articles-title#8": "gp0nsa",
+          "home-reviews-title#9": "qwturq",
+          "home-faq-title#10": "jfh4q4",
+          "home-contact-banner-title#11": "1bvl5zd",
+          "Pied de page#12": "18djq8d"
+        }
+      },
+      "/domiciliation-commerciale": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 4952,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "service-hero-title#1": "1yt2ojr",
+          "service-what#2": "4b15oa",
+          "service-why#3": "18v9u5r",
+          "service-solutions#4": "1kxlis9",
+          "service-faq-title#5": "19wapp1",
+          "service-info-title#6": "q87x1a",
+          "Promesses#7": "8mczmg",
+          "Pied de page#8": "w92uex"
+        }
+      },
+      "/permanence-telephonique": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 4441,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "service-hero-title#1": "3s9vr4",
+          "service-what#2": "dft778",
+          "service-why#3": "1cyh94x",
+          "service-solutions#4": "zk6yep",
+          "service-faq-title#5": "19mfh6p",
+          "service-info-title#6": "q87x1a",
+          "Promesses#7": "8mczmg",
+          "Pied de page#8": "w92uex"
+        }
+      },
+      "/location-de-bureaux": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 4792,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "service-hero-title#1": "152he9u",
+          "service-what#2": "11fhijl",
+          "service-why#3": "kgm91u",
+          "service-solutions#4": "1u7xpeu",
+          "service-faq-title#5": "14q49ad",
+          "service-info-title#6": "q87x1a",
+          "Promesses#7": "8mczmg",
+          "Pied de page#8": "w92uex"
+        }
+      },
+      "/salles-de-reunion": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 4167,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "service-hero-title#1": "lq8xvz",
+          "service-what#2": "19eidvu",
+          "service-why#3": "irg4ih",
+          "service-solutions#4": "q20e4t",
+          "service-faq-title#5": "lk6g5r",
+          "service-info-title#6": "q87x1a",
+          "Promesses#7": "8mczmg",
+          "Pied de page#8": "w92uex"
+        }
+      },
+      "/mentions-legales": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 1646,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "HEADER#1": "2ap7jk",
+          "SECTION#2": "2vlnx5",
+          "SECTION#3": "w852sr",
+          "SECTION#4": "rwpwbp",
+          "SECTION#5": "1tbuv7n",
+          "SECTION#6": "1tbuv7n",
+          "Pied de page#7": "w92uex"
+        }
+      },
+      "/politique-de-confidentialite": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 2000,
+        "sections": {
+          "HEADER#0": "56cfsd",
+          "HEADER#1": "2ap7jk",
+          "SECTION#2": "1n9f87n",
+          "SECTION#3": "fby9dp",
+          "SECTION#4": "yajwes",
+          "SECTION#5": "1tbuv7n",
+          "SECTION#6": "18yqhgc",
+          "Pied de page#7": "w92uex"
+        }
+      },
+      "/en/domiciliation-commerciale": {
+        "innerWidth": 1280,
+        "clientWidth": 1280,
+        "lg": true,
+        "docH": 4503,
+        "sections": {
+          "HEADER#0": "1y3s07d",
+          "service-hero-title#1": "9nlvls",
+          "service-what#2": "czi43v",
+          "service-why#3": "idvm1d",
+          "service-solutions#4": "1ugw0ku",
+          "service-faq-title#5": "3s6xht",
+          "service-info-title#6": "s7vpgz",
+          "Promesses#7": "10b9hdx",
+          "Pied de page#8": "18djq8d"
+        }
+      }
+    },
+    "1440": {
+      "/": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 7653,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "home-hero-title#1": "uzuxcr",
+          "Promesses#2": "e2qqeg",
+          "home-spaces-title#3": "3oav83",
+          "home-services-title#4": "g2o9gt",
+          "home-personas-title#5": "1az595e",
+          "home-offers-title#6": "dakx6j",
+          "home-instagram-title#7": "epe3bu",
+          "home-articles-title#8": "v63jan",
+          "home-reviews-title#9": "xu5fvg",
+          "home-faq-title#10": "wr807w",
+          "home-contact-banner-title#11": "1jo7mud",
+          "Pied de page#12": "b7dvla"
+        }
+      },
+      "/en": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 7512,
+        "sections": {
+          "HEADER#0": "18smo8o",
+          "home-hero-title#1": "1eat37c",
+          "Promesses#2": "j0kg0t",
+          "home-spaces-title#3": "f8xcw1",
+          "home-services-title#4": "1amq1l3",
+          "home-personas-title#5": "iabfch",
+          "home-offers-title#6": "10tqmeo",
+          "home-instagram-title#7": "1f8jro3",
+          "home-articles-title#8": "l7r5b0",
+          "home-reviews-title#9": "1lry9o4",
+          "home-faq-title#10": "1j12jxb",
+          "home-contact-banner-title#11": "m0ke15",
+          "Pied de page#12": "8cshju"
+        }
+      },
+      "/domiciliation-commerciale": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 4952,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "service-hero-title#1": "19lzfgh",
+          "service-what#2": "ezgw4f",
+          "service-why#3": "y8pryi",
+          "service-solutions#4": "1b3nkkz",
+          "service-faq-title#5": "1ryrin7",
+          "service-info-title#6": "1s6965k",
+          "Promesses#7": "e2qqeg",
+          "Pied de page#8": "b7dvla"
+        }
+      },
+      "/permanence-telephonique": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 4441,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "service-hero-title#1": "g48n4y",
+          "service-what#2": "1juiz0x",
+          "service-why#3": "wks1dn",
+          "service-solutions#4": "1x93s0o",
+          "service-faq-title#5": "o1mdo7",
+          "service-info-title#6": "1s6965k",
+          "Promesses#7": "e2qqeg",
+          "Pied de page#8": "b7dvla"
+        }
+      },
+      "/location-de-bureaux": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 4792,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "service-hero-title#1": "5m04bx",
+          "service-what#2": "139kvs4",
+          "service-why#3": "12fi0lb",
+          "service-solutions#4": "sz6jws",
+          "service-faq-title#5": "1a23m1f",
+          "service-info-title#6": "1s6965k",
+          "Promesses#7": "e2qqeg",
+          "Pied de page#8": "b7dvla"
+        }
+      },
+      "/salles-de-reunion": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 4167,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "service-hero-title#1": "1x1rhj8",
+          "service-what#2": "or6573",
+          "service-why#3": "1i4p6r8",
+          "service-solutions#4": "1saiyw7",
+          "service-faq-title#5": "12es0jd",
+          "service-info-title#6": "1s6965k",
+          "Promesses#7": "e2qqeg",
+          "Pied de page#8": "b7dvla"
+        }
+      },
+      "/mentions-legales": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 1646,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "HEADER#1": "1eghngw",
+          "SECTION#2": "1hbq63d",
+          "SECTION#3": "p5u4zo",
+          "SECTION#4": "3wqhhm",
+          "SECTION#5": "1n4bazw",
+          "SECTION#6": "1n4bazw",
+          "Pied de page#7": "b7dvla"
+        }
+      },
+      "/politique-de-confidentialite": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 2000,
+        "sections": {
+          "HEADER#0": "hsm2oo",
+          "HEADER#1": "1eghngw",
+          "SECTION#2": "19504ur",
+          "SECTION#3": "1lm6c0i",
+          "SECTION#4": "1myp0vv",
+          "SECTION#5": "1n4bazw",
+          "SECTION#6": "gpcn4s",
+          "Pied de page#7": "b7dvla"
+        }
+      },
+      "/en/domiciliation-commerciale": {
+        "innerWidth": 1440,
+        "clientWidth": 1440,
+        "lg": true,
+        "docH": 4503,
+        "sections": {
+          "HEADER#0": "18smo8o",
+          "service-hero-title#1": "1igxazv",
+          "service-what#2": "146rssu",
+          "service-why#3": "1p0q3ys",
+          "service-solutions#4": "174aa84",
+          "service-faq-title#5": "18an4iv",
+          "service-info-title#6": "dtovng",
+          "Promesses#7": "j0kg0t",
+          "Pied de page#8": "8cshju"
+        }
+      }
+    },
+    "1920": {
+      "/": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 7653,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "home-hero-title#1": "8yzydl",
+          "Promesses#2": "gjr87i",
+          "home-spaces-title#3": "sehwg3",
+          "home-services-title#4": "l5860b",
+          "home-personas-title#5": "olax5u",
+          "home-offers-title#6": "s5w4d",
+          "home-instagram-title#7": "uyvglg",
+          "home-articles-title#8": "3z83nl",
+          "home-reviews-title#9": "5dk4sm",
+          "home-faq-title#10": "4j3ysw",
+          "home-contact-banner-title#11": "1d3lx39",
+          "Pied de page#12": "weph9a"
+        }
+      },
+      "/en": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 7512,
+        "sections": {
+          "HEADER#0": "1et9xgk",
+          "home-hero-title#1": "1t1e4sy",
+          "Promesses#2": "x41rco",
+          "home-spaces-title#3": "1a6mad1",
+          "home-services-title#4": "3eyyv5",
+          "home-personas-title#5": "7srdj5",
+          "home-offers-title#6": "1cjcgbr",
+          "home-instagram-title#7": "ghh6j1",
+          "home-articles-title#8": "1aesv25",
+          "home-reviews-title#9": "1lj9kof",
+          "home-faq-title#10": "lwm8kz",
+          "home-contact-banner-title#11": "oggijt",
+          "Pied de page#12": "dyq9nu"
+        }
+      },
+      "/domiciliation-commerciale": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 4952,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "service-hero-title#1": "1ek32ar",
+          "service-what#2": "1ucw6d7",
+          "service-why#3": "aj23ji",
+          "service-solutions#4": "1540f3b",
+          "service-faq-title#5": "1cqe4tp",
+          "service-info-title#6": "xoi323",
+          "Promesses#7": "gjr87i",
+          "Pied de page#8": "weph9a"
+        }
+      },
+      "/permanence-telephonique": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 4441,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "service-hero-title#1": "13sf5m0",
+          "service-what#2": "gu8ppx",
+          "service-why#3": "63qh6k",
+          "service-solutions#4": "1d13itq",
+          "service-faq-title#5": "g90l2x",
+          "service-info-title#6": "xoi323",
+          "Promesses#7": "gjr87i",
+          "Pied de page#8": "weph9a"
+        }
+      },
+      "/location-de-bureaux": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 4792,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "service-hero-title#1": "fhoxz4",
+          "service-what#2": "1lkq3k",
+          "service-why#3": "1y3zvhw",
+          "service-solutions#4": "xhvik8",
+          "service-faq-title#5": "aquxb1",
+          "service-info-title#6": "xoi323",
+          "Promesses#7": "gjr87i",
+          "Pied de page#8": "weph9a"
+        }
+      },
+      "/salles-de-reunion": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 4167,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "service-hero-title#1": "18rawm9",
+          "service-what#2": "qrt4ej",
+          "service-why#3": "1b2p333",
+          "service-solutions#4": "1uvjx5f",
+          "service-faq-title#5": "1l7j7g7",
+          "service-info-title#6": "xoi323",
+          "Promesses#7": "gjr87i",
+          "Pied de page#8": "weph9a"
+        }
+      },
+      "/mentions-legales": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 1646,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "HEADER#1": "1ig2ak0",
+          "SECTION#2": "chh5y1",
+          "SECTION#3": "5h2fvr",
+          "SECTION#4": "1evouw9",
+          "SECTION#5": "1taj0un",
+          "SECTION#6": "1taj0un",
+          "Pied de page#7": "weph9a"
+        }
+      },
+      "/politique-de-confidentialite": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 2000,
+        "sections": {
+          "HEADER#0": "bwyoh6",
+          "HEADER#1": "1ig2ak0",
+          "SECTION#2": "vte7o3",
+          "SECTION#3": "1v2nek1",
+          "SECTION#4": "17d034o",
+          "SECTION#5": "1taj0un",
+          "SECTION#6": "mjxzw",
+          "Pied de page#7": "weph9a"
+        }
+      },
+      "/en/domiciliation-commerciale": {
+        "innerWidth": 1920,
+        "clientWidth": 1920,
+        "lg": true,
+        "docH": 4503,
+        "sections": {
+          "HEADER#0": "1et9xgk",
+          "service-hero-title#1": "141l2ww",
+          "service-what#2": "13zy34a",
+          "service-why#3": "7ipp9s",
+          "service-solutions#4": "jfj34g",
+          "service-faq-title#5": "l34ueh",
+          "service-info-title#6": "1bmjm50",
+          "Promesses#7": "x41rco",
+          "Pied de page#8": "dyq9nu"
+        }
+      }
+    }
+  },
+  "audit320": {
+    "/": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 12251,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "home-hero-title",
+          36,
+          16,
+          716
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          922
+        ],
+        [
+          "home-spaces-title",
+          16,
+          16,
+          776
+        ],
+        [
+          "home-services-title",
+          null,
+          null,
+          1333
+        ],
+        [
+          "home-personas-title",
+          0,
+          0,
+          977
+        ],
+        [
+          "home-offers-title",
+          0,
+          0,
+          2126
+        ],
+        [
+          "home-instagram-title",
+          16,
+          16,
+          703
+        ],
+        [
+          "home-articles-title",
+          16,
+          16,
+          1076
+        ],
+        [
+          "home-reviews-title",
+          16,
+          16,
+          1413
+        ],
+        [
+          "home-faq-title",
+          16,
+          16,
+          656
+        ],
+        [
+          "home-contact-banner-title",
+          40,
+          40,
+          416
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "@alfa_coworking_rouen",
+          185,
+          20
+        ],
+        [
+          "Article 1 : Comment choisir son bureau p",
+          24,
+          8
+        ],
+        [
+          "Article 2 : Domicilier son entreprise à ",
+          8,
+          8
+        ],
+        [
+          "Article 3 : Ne plus manquer un appel pen",
+          8,
+          8
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/en": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 11439,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "home-hero-title",
+          36,
+          16,
+          681
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          878
+        ],
+        [
+          "home-spaces-title",
+          16,
+          16,
+          776
+        ],
+        [
+          "home-services-title",
+          null,
+          null,
+          1229
+        ],
+        [
+          "home-personas-title",
+          0,
+          0,
+          955
+        ],
+        [
+          "home-offers-title",
+          21,
+          0,
+          1972
+        ],
+        [
+          "home-instagram-title",
+          16,
+          16,
+          599
+        ],
+        [
+          "home-articles-title",
+          16,
+          16,
+          1044
+        ],
+        [
+          "home-reviews-title",
+          16,
+          16,
+          1211
+        ],
+        [
+          "home-faq-title",
+          16,
+          16,
+          620
+        ],
+        [
+          "home-contact-banner-title",
+          40,
+          40,
+          362
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          831
+        ]
+      ],
+      "small": [
+        [
+          "Phone: 02 32 08 32 32",
+          153,
+          17
+        ],
+        [
+          "@alfa_coworking_rouen",
+          185,
+          20
+        ],
+        [
+          "Article 1 : How to choose a professional",
+          24,
+          8
+        ],
+        [
+          "Article 2 : Registering your business in",
+          8,
+          8
+        ],
+        [
+          "Article 3 : Stop missing calls during me",
+          8,
+          8
+        ],
+        [
+          "Business address",
+          136,
+          20
+        ],
+        [
+          "Telephone answering",
+          162,
+          20
+        ],
+        [
+          "Office rental",
+          101,
+          20
+        ],
+        [
+          "Meeting rooms",
+          119,
+          20
+        ],
+        [
+          "Alfa news",
+          56,
+          16
+        ],
+        [
+          "Legal notice",
+          69,
+          15
+        ],
+        [
+          "Privacy policy",
+          79,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Phone: 02 32 08 32 32",
+          16,
+          169
+        ],
+        [
+          "Alfa, home",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/domiciliation-commerciale": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 7748,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "service-hero-title",
+          16,
+          16,
+          817
+        ],
+        [
+          "service-what",
+          16,
+          16,
+          1154
+        ],
+        [
+          "service-why",
+          16,
+          16,
+          1490
+        ],
+        [
+          "service-solutions",
+          16,
+          16,
+          1336
+        ],
+        [
+          "service-faq-title",
+          16,
+          16,
+          680
+        ],
+        [
+          "service-info-title",
+          40,
+          40,
+          276
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          922
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/permanence-telephonique": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 6769,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "service-hero-title",
+          16,
+          16,
+          765
+        ],
+        [
+          "service-what",
+          16,
+          16,
+          1128
+        ],
+        [
+          "service-why",
+          16,
+          16,
+          882
+        ],
+        [
+          "service-solutions",
+          16,
+          16,
+          1066
+        ],
+        [
+          "service-faq-title",
+          16,
+          16,
+          658
+        ],
+        [
+          "service-info-title",
+          40,
+          40,
+          276
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          922
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/location-de-bureaux": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 6267,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "service-hero-title",
+          16,
+          16,
+          580
+        ],
+        [
+          "service-what",
+          16,
+          16,
+          582
+        ],
+        [
+          "service-why",
+          16,
+          16,
+          1394
+        ],
+        [
+          "service-solutions",
+          16,
+          16,
+          768
+        ],
+        [
+          "service-faq-title",
+          16,
+          16,
+          672
+        ],
+        [
+          "service-info-title",
+          40,
+          40,
+          276
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          922
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/salles-de-reunion": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 5559,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "service-hero-title",
+          16,
+          16,
+          554
+        ],
+        [
+          "service-what",
+          16,
+          16,
+          582
+        ],
+        [
+          "service-why",
+          16,
+          16,
+          727
+        ],
+        [
+          "service-solutions",
+          16,
+          16,
+          768
+        ],
+        [
+          "service-faq-title",
+          16,
+          16,
+          658
+        ],
+        [
+          "service-info-title",
+          40,
+          40,
+          276
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          922
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/mentions-legales": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 2364,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "HEADER",
+          16,
+          16,
+          84
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          338
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          66
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          168
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          118
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          144
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Politique de Confidentialité",
+          208,
+          20
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/politique-de-confidentialite": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 3222,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "HEADER",
+          16,
+          16,
+          120
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          260
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          376
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          540
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          170
+        ],
+        [
+          "SECTION",
+          16,
+          16,
+          234
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          855
+        ]
+      ],
+      "small": [
+        [
+          "Téléphone : 02 32 08 32 32",
+          185,
+          17
+        ],
+        [
+          "Accueil",
+          50,
+          17
+        ],
+        [
+          "Mentions légales",
+          131,
+          20
+        ],
+        [
+          "Domiciliation commerciale",
+          194,
+          20
+        ],
+        [
+          "Permanence téléphonique",
+          194,
+          20
+        ],
+        [
+          "Location de bureaux",
+          156,
+          20
+        ],
+        [
+          "Salles de réunion",
+          134,
+          20
+        ],
+        [
+          "Actualités Alfa",
+          81,
+          16
+        ],
+        [
+          "Mentions légales",
+          96,
+          15
+        ],
+        [
+          "Politique de Confidentialité",
+          152,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Téléphone : 02 32 08 32 ",
+          16,
+          201
+        ],
+        [
+          "Alfa, accueil",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    },
+    "/en/domiciliation-commerciale": {
+      "vw": 320,
+      "scrollW": 352,
+      "docH": 6465,
+      "secs": [
+        [
+          "HEADER",
+          16,
+          -32,
+          218
+        ],
+        [
+          "service-hero-title",
+          16,
+          16,
+          676
+        ],
+        [
+          "service-what",
+          16,
+          16,
+          790
+        ],
+        [
+          "service-why",
+          16,
+          16,
+          1074
+        ],
+        [
+          "service-solutions",
+          16,
+          16,
+          1102
+        ],
+        [
+          "service-faq-title",
+          16,
+          16,
+          672
+        ],
+        [
+          "service-info-title",
+          40,
+          40,
+          224
+        ],
+        [
+          "Promesses",
+          24,
+          24,
+          878
+        ],
+        [
+          "Pied de page",
+          16,
+          16,
+          831
+        ]
+      ],
+      "small": [
+        [
+          "Phone: 02 32 08 32 32",
+          153,
+          17
+        ],
+        [
+          "Home",
+          40,
+          17
+        ],
+        [
+          "Business address",
+          136,
+          20
+        ],
+        [
+          "Telephone answering",
+          162,
+          20
+        ],
+        [
+          "Office rental",
+          101,
+          20
+        ],
+        [
+          "Meeting rooms",
+          119,
+          20
+        ],
+        [
+          "Alfa news",
+          56,
+          16
+        ],
+        [
+          "Legal notice",
+          69,
+          15
+        ],
+        [
+          "Privacy policy",
+          79,
+          15
+        ]
+      ],
+      "headerKids": [
+        [
+          "Phone: 02 32 08 32 32",
+          16,
+          169
+        ],
+        [
+          "Alfa, home",
+          16,
+          128
+        ],
+        [
+          "IMG",
+          16,
+          128
+        ],
+        [
+          "Facebook, nouvel onglet",
+          128,
+          172
+        ],
+        [
+          "Instagram, nouvel onglet",
+          172,
+          216
+        ],
+        [
+          "Français",
+          220,
+          264
+        ],
+        [
+          "English",
+          264,
+          308
+        ],
+        [
+          "Ouvrir le menu",
+          308,
+          352
+        ]
+      ]
+    }
+  }
+}

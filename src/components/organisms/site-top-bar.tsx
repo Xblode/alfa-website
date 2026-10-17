@@ -31,7 +31,7 @@ function TopBarLine({
   return (
     <a
       href={href}
-      className="rounded-sm underline decoration-secondary/40 underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+      className="rounded-sm underline decoration-secondary/40 underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary max-lg:inline-flex max-lg:min-h-11 max-lg:items-center"
     >
       {content}
     </a>
@@ -49,7 +49,7 @@ export function SiteTopBar() {
         <ul
           aria-label="Informations"
           data-marquee-track=""
-          className="flex max-w-full list-none flex-wrap gap-x-6 gap-y-1 p-0 motion-safe:w-max motion-safe:max-w-none motion-safe:flex-nowrap motion-safe:gap-0 motion-safe:animate-top-bar-marquee motion-safe:hover:[animation-play-state:paused] motion-safe:focus-within:[animation-play-state:paused]"
+          className="flex max-w-full list-none flex-wrap gap-x-6 gap-y-1 p-0 motion-safe:w-max motion-safe:max-w-none motion-safe:flex-nowrap motion-safe:gap-0 motion-safe:animate-top-bar-marquee motion-safe:hover:[animation-play-state:paused] motion-safe:focus-within:[animation-play-state:paused] max-lg:items-center"
         >
           {track.map((message, index) => {
             const clone = index >= messages.length;

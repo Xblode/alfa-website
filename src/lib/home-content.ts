@@ -755,7 +755,7 @@ export const homeContent = {
   },
   reviews: {
     demo: true,
-    title: "Plus de 75 000 entreprises nous font confiance !",
+    title: "Ils nous font confiance !",
     intro:
       "Ils nous ont fait confiance. Pourquoi pas vous ? Découvrez ce que nos clients pensent de nous.",
     scores: [

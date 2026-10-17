@@ -12,7 +12,7 @@ export type SiteModTool = {
 
 export const tools: SiteModTool[] = [];
 
-const toolOrder = ["breakpoint", "spacing", "a11y", "search", "export"];
+const toolOrder = ["breakpoint", "spacing", "a11y", "search", "export", "move"];
 
 function toolRank(key: string): number {
   const index = toolOrder.indexOf(key);

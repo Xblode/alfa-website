@@ -406,7 +406,7 @@ export const enDictionary: Record<string, string> = {
   "Oui. C'est un espace équipé, utilisable dès l'arrivée, pour une réunion ou un rendez-vous.":
     "Yes. It is a furnished space, ready to use on arrival, for a meeting or an appointment.",
   "Peut-on adapter la location à un besoin précis ?": "Can the rental be shaped to a specific need?",
-  "Plus de 75 000 entreprises nous font confiance !": "More than 75,000 companies trust us!",
+  "Ils nous font confiance !": "They trust us!",
   "Ils nous ont fait confiance. Pourquoi pas vous ? Découvrez ce que nos clients pensent de nous.":
     "They trusted us. Why not you? See what our clients think.",
   "4,5 · 1218 avis": "4.5 · 1218 reviews",

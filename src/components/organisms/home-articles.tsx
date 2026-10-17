@@ -182,10 +182,10 @@ export function HomeArticles() {
                         aria-selected={selected}
                         aria-label={`Article ${idx + 1} : ${item.title}`}
                         onClick={() => goTo(idx)}
-                        className={`h-2 rounded-full transition-all ${focusRing} ${
+                        className={`h-2 rounded-full transition-all max-lg:h-6 max-lg:bg-clip-content max-lg:py-2 ${focusRing} ${
                           selected
                             ? "w-6 bg-primary"
-                            : "w-2 bg-secondary/20 hover:bg-secondary/40"
+                            : "w-2 bg-secondary/20 hover:bg-secondary/40 max-lg:w-6 max-lg:px-2"
                         }`}
                       />
                     );

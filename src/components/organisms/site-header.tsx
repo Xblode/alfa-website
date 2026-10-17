@@ -46,7 +46,7 @@ export function SiteHeader() {
           id="menu-mobile"
           aria-label="Navigation principale"
           hidden={!menuOpen}
-          className="border-t border-secondary/10 px-4 py-2 xl:hidden"
+          className="border-t border-secondary/10 px-4 py-2 xl:hidden max-lg:max-h-[calc(100dvh-16rem)] max-lg:overflow-x-hidden max-lg:overflow-y-auto max-lg:overscroll-contain"
         >
           <NavLinks key={menuOpen ? "mobile-open" : "mobile-closed"} className="flex flex-col" onNavigate={closeMenu} />
         </nav>
@@ -96,7 +96,7 @@ function SocialLinks() {
   ] as const;
 
   return (
-    <ul className="flex">
+    <ul className="flex max-sm:hidden">
       {links.map(([label, href, icon]) => (
         <li key={label}>
           <a

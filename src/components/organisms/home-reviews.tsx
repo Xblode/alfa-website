@@ -1,39 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
 import { useHomeContent, useTranslate } from "@/components/content-provider";
-
-const focusRing =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 export function HomeReviews() {
   const t = useTranslate();
   const { reviews } = useHomeContent();
-  const trackRef = useRef<HTMLUListElement>(null);
-  const [active, setActive] = useState(0);
-  const last = reviews.items.length - 1;
-
-  function goTo(index: number) {
-    const track = trackRef.current;
-    const card = track?.querySelectorAll<HTMLElement>("[data-review-card]")[index];
-    if (!track || !card) return;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    track.scrollTo({
-      left: card.offsetLeft,
-      behavior: reduceMotion ? "auto" : "smooth",
-    });
-    setActive(index);
-  }
-
-  function onTrackScroll() {
-    const track = trackRef.current;
-    const card = track?.querySelector<HTMLElement>("[data-review-card]");
-    if (!track || !card) return;
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-    const step = card.offsetWidth + gap;
-    if (step <= 0) return;
-    setActive(Math.min(last, Math.max(0, Math.round(track.scrollLeft / step))));
-  }
+  const shown = reviews.items.slice(0, 3);
 
   return (
     <section
@@ -66,28 +38,21 @@ export function HomeReviews() {
         </div>
 
         <ul
-          id="home-reviews-track"
-          ref={trackRef}
-          data-component="carousel"
+          data-component="grid"
           aria-label={t("Avis clients")}
-          onScroll={onTrackScroll}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="grid gap-5 md:grid-cols-3 max-lg:gap-3"
         >
-          {reviews.items.map((review) => (
-            <li
-              key={review.id}
-              data-review-card
-              className="w-[min(85vw,22rem)] shrink-0 snap-start"
-            >
+          {shown.map((review) => (
+            <li key={review.id} data-review-card className="min-w-0">
               <article
                 data-component="card"
                 data-name={review.author}
-                className="flex h-full flex-col rounded-2xl border border-secondary/10 bg-surface p-5 shadow-sm"
+                className="flex h-full flex-col rounded-2xl border border-secondary/10 bg-surface p-5 shadow-sm max-lg:p-3"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 max-lg:gap-2">
                   <span
                     aria-hidden="true"
-                    className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-secondary"
+                    className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-secondary max-lg:size-8"
                   >
                     {initials(review.author)}
                   </span>
@@ -98,45 +63,12 @@ export function HomeReviews() {
                     </time>
                   </div>
                 </div>
-                <h3 className="mt-4 font-heading text-lg font-semibold leading-snug">{review.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-secondary/80">{review.text}</p>
+                <h3 className="mt-4 font-heading text-lg font-semibold leading-snug max-lg:mt-2 max-lg:text-base">{review.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-secondary/80 max-lg:mt-1 max-lg:leading-snug">{review.text}</p>
               </article>
             </li>
           ))}
         </ul>
-
-        <div className="flex items-center justify-center gap-4">
-          <ScrollButton
-            label={t("Avis précédent")}
-            direction={-1}
-            disabled={active <= 0}
-            onClick={() => goTo(active - 1)}
-          />
-          <div role="tablist" aria-label={t("Choisir un avis")} className="flex items-center gap-2">
-            {reviews.items.map((review, index) => {
-              const selected = index === active;
-              return (
-                <button
-                  key={review.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={selected}
-                  aria-label={`${index + 1} / ${reviews.items.length} · ${review.author}`}
-                  onClick={() => goTo(index)}
-                  className={`size-2 rounded-full ${focusRing} ${
-                    selected ? "bg-primary" : "bg-secondary/25 hover:bg-secondary/45"
-                  }`}
-                />
-              );
-            })}
-          </div>
-          <ScrollButton
-            label={t("Avis suivant")}
-            direction={1}
-            disabled={active >= last}
-            onClick={() => goTo(active + 1)}
-          />
-        </div>
       </div>
     </section>
   );
@@ -177,40 +109,5 @@ function Star({ half = false }: { half?: boolean }) {
         />
       ) : null}
     </svg>
-  );
-}
-
-function ScrollButton({
-  label,
-  direction,
-  disabled,
-  onClick,
-}: {
-  label: string;
-  direction: -1 | 1;
-  disabled: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      data-component="button"
-      aria-controls="home-reviews-track"
-      aria-label={label}
-      disabled={disabled}
-      onClick={onClick}
-      className={`inline-flex size-10 items-center justify-center rounded-full border border-primary bg-white/80 text-primary backdrop-blur-xl disabled:cursor-not-allowed disabled:opacity-40 ${focusRing}`}
-    >
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-5">
-        <path
-          d={direction < 0 ? "M14.5 6 9 12l5.5 6" : "M9.5 6 15 12l-5.5 6"}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </button>
   );
 }

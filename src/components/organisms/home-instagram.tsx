@@ -83,7 +83,7 @@ export function HomeInstagram() {
           <div data-name="Feed Instagram" className="order-2 lg:order-1">
             <a
               href={instagramUrl}
-              className="group mb-4 inline-flex items-center gap-1.5 text-sm font-semibold underline decoration-primary decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary sm:text-base"
+              className="group mb-4 inline-flex items-center gap-1.5 text-sm font-semibold underline decoration-primary decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary sm:text-base max-sm:min-h-6"
             >
               <span>@{homeContent.social.instagramHandle}</span>
               <ArrowUpRightIcon />
@@ -122,13 +122,13 @@ export function HomeInstagram() {
             <h2 id="home-instagram-title" className="text-2xl font-semibold sm:text-3xl">
               {t("Alfa sur Instagram")}
             </h2>
-            <div className="mt-2.5 flex items-center justify-between gap-4">
+            <div className="mt-2.5 flex items-center justify-between gap-4 max-sm:flex-col max-sm:items-stretch">
               <p className="min-w-0 text-base leading-relaxed text-secondary/85">
                 {t("Aperçu des espaces du centre. Les publications du compte sont sur Instagram.")}
               </p>
               <a
                 href={instagramUrl}
-                className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border-2 border-primary bg-secondary px-5 py-2.5 text-base font-semibold text-surface transition-colors hover:bg-primary-100 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
+                className="group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-xl border-2 border-primary bg-secondary px-5 py-2.5 text-base font-semibold text-surface transition-colors hover:bg-primary-100 hover:text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none max-sm:w-full"
               >
                 <span>{t("Voir sur Instagram")}</span>
                 <ArrowUpRightIcon />

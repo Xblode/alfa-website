@@ -44,6 +44,7 @@ export function HomeSpaces() {
     getServerPerView,
   );
   const optionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const filterRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [shapeHeight, setShapeHeight] = useState<number | null>(null);
 
@@ -75,6 +76,26 @@ export function HomeSpaces() {
       window.removeEventListener("resize", apply);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    const el = filterRef.current;
+    if (!el) return;
+
+    const update = () => {
+      const hasMore = el.scrollWidth - el.clientWidth - el.scrollLeft > 4;
+      if (hasMore) el.dataset.more = "true";
+      else delete el.dataset.more;
+    };
+
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => {
+      el.removeEventListener("scroll", update);
+      observer.disconnect();
+    };
+  }, [cities.length]);
 
   const visible =
     city == null ? spaces : spaces.filter((item) => item.city === city);
@@ -137,7 +158,7 @@ export function HomeSpaces() {
         <a
           href={homeContent.spaces.ctaHref}
           data-component="button-primary"
-          className={`group inline-flex items-center gap-2 rounded-full bg-secondary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-secondary/20 transition-colors hover:bg-white hover:text-secondary md:col-span-5 md:justify-self-end ${focusRing}`}
+          className={`group inline-flex items-center gap-2 rounded-full bg-secondary px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-secondary/20 transition-colors hover:bg-white hover:text-secondary md:col-span-5 md:justify-self-end max-lg:min-h-11 ${focusRing}`}
         >
           <span>{homeContent.spaces.cta}</span>
           <span
@@ -150,9 +171,10 @@ export function HomeSpaces() {
       </div>
 
       <div
+        ref={filterRef}
         role="radiogroup"
         aria-label="Filtrer par ville"
-        className="mt-6 flex flex-nowrap gap-2 overflow-x-auto pt-1 pb-1 text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-6 flex flex-nowrap gap-2 overflow-x-auto pt-1 pb-1 text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-lg:data-[more=true]:[mask-image:linear-gradient(to_right,#000_calc(100%-2.75rem),transparent)]"
         onKeyDown={onFilterKeyDown}
       >
         {filterValues.map((value, idx) => {
@@ -168,7 +190,7 @@ export function HomeSpaces() {
               aria-checked={selected}
               tabIndex={selected ? 0 : -1}
               onClick={() => selectCity(value)}
-              className={`shrink-0 rounded-full border-2 px-3.5 py-1.5 font-bold whitespace-nowrap shadow-sm transition-colors motion-reduce:transition-none ${focusRing} ${
+              className={`shrink-0 rounded-full border-2 px-3.5 py-1.5 font-bold whitespace-nowrap shadow-sm transition-colors motion-reduce:transition-none max-lg:inline-flex max-lg:min-h-11 max-lg:items-center max-lg:justify-center ${focusRing} ${
                 selected
                   ? "border-transparent bg-secondary text-white"
                   : "border-[#00a796] bg-white text-secondary"
@@ -195,14 +217,19 @@ export function HomeSpaces() {
               className="flex [--space-step:100%] [transform:translate3d(calc(var(--space-index)*var(--space-step)*-1),0,0)] transition-transform duration-200 ease-out motion-reduce:transition-none md:[--space-step:25%]"
             >
               {visible.map((item) => (
-                <li key={item.id} className="w-full shrink-0 px-2 md:w-1/4">
+                <li
+                  key={item.id}
+                  className={`w-full shrink-0 px-2 md:w-1/4${visible.length === 1 ? " max-lg:!w-full" : ""}`}
+                >
                   <SpaceCard space={item} />
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="mt-5 flex items-center justify-between gap-4">
+          <div
+            className={`mt-5 flex items-center justify-between gap-4${visible.length === 1 ? " max-lg:hidden" : ""}`}
+          >
           <div className="flex min-w-0 flex-1 items-center gap-3 text-sm font-medium text-white sm:max-w-xs">
             <span className="shrink-0 tabular-nums" aria-live="polite">
               {activeIndex + 1}–{Math.min(visible.length, activeIndex + perView)} / {visible.length}

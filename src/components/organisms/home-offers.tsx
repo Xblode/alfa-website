@@ -80,7 +80,7 @@ export function HomeOffers() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary-100/25 to-surface"
       />
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-8">
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-8 max-lg:px-4">
         <div className="flex flex-col items-end gap-2 text-right">
           <span className="h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
           <h2
@@ -91,7 +91,7 @@ export function HomeOffers() {
           </h2>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-secondary text-surface">
+        <div className="overflow-hidden rounded-2xl border border-secondary/12 bg-surface text-secondary shadow-xs">
           <div
             role="tablist"
             aria-label="Offres Alfa"
@@ -119,7 +119,7 @@ export function HomeOffers() {
             id="home-offers-panel"
             aria-labelledby={`offer-tab-${selected.id}`}
             data-component="card"
-            className="grid gap-6 border-t border-white/10 p-5 sm:p-6 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-10"
+            className="grid gap-6 border-t border-secondary/10 p-5 sm:p-6 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-10"
           >
             <div className="flex flex-col gap-3">
               <OfferIcon id={selected.id} className="bg-primary text-secondary" />
@@ -130,26 +130,26 @@ export function HomeOffers() {
               ) : null}
               <h3 className="text-2xl font-semibold tracking-tight">{selected.title}</h3>
               {selected.price ? (
-                <p className="inline-flex w-fit items-center rounded-lg bg-primary/20 px-3 py-1.5 text-sm font-bold text-primary-100">
+                <p className="inline-flex w-fit items-center rounded-lg bg-primary/15 px-3 py-1.5 text-sm font-bold text-secondary">
                   {selected.price.label}
                 </p>
               ) : null}
-              <p className="text-sm leading-relaxed text-surface/85 sm:text-base">
+              <p className="text-sm leading-relaxed text-secondary/85 sm:text-base">
                 {selected.intro}
               </p>
             </div>
-            <ul className="grid content-start gap-2 sm:grid-cols-2">
+            <ul className="grid content-start gap-2 sm:grid-cols-2 max-lg:gap-1">
               {selected.bullets.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex items-start gap-2.5 rounded-xl bg-white/[0.06] px-3 py-2.5 text-sm leading-snug"
+                  className="flex items-start gap-2.5 rounded-xl bg-primary/8 px-3 py-2.5 text-sm leading-snug max-lg:gap-2 max-lg:px-2.5 max-lg:py-1.5 max-lg:leading-tight"
                 >
                   <CheckIcon />
                   <span>{bullet}</span>
                 </li>
               ))}
             </ul>
-            <OfferExamples id={selected.id} examples={selected.examples} tone="dark" />
+            <OfferExamples id={selected.id} examples={selected.examples} tone="light" />
           </div>
         </div>
 
@@ -203,19 +203,19 @@ function OfferExamples({
   const light = tone === "light";
 
   return (
-    <div data-name="Exemples clients" className="flex flex-col gap-3 lg:col-span-2">
+    <div data-name="Exemples clients" className="flex flex-col gap-3 lg:col-span-2 max-lg:gap-1.5">
       <p
         id={labelId}
         className={`text-xs font-semibold tracking-wide uppercase ${light ? "text-primary" : "text-primary-100"}`}
       >
         {t("Pour vous, par exemple")}
       </p>
-      <ul aria-labelledby={labelId} className="grid gap-2 sm:grid-cols-3">
+      <ul aria-labelledby={labelId} className="grid gap-2 sm:grid-cols-3 max-lg:gap-1.5">
         {examples.map((example) => (
           <li
             key={example.role}
             data-name={example.role}
-            className={`flex flex-col gap-1 rounded-xl px-3 py-3 ${
+            className={`flex flex-col gap-1 rounded-xl px-3 py-3 max-lg:gap-0.5 max-lg:px-2.5 max-lg:py-1.5 ${
               light ? "bg-[#e6fffc]" : "bg-surface/10"
             }`}
           >
@@ -223,7 +223,7 @@ function OfferExamples({
               {example.role}
             </span>
             <span
-              className={`text-sm leading-snug ${light ? "text-secondary/80" : "text-surface/80"}`}
+              className={`text-sm leading-snug max-lg:leading-tight ${light ? "text-secondary/80" : "text-surface/80"}`}
             >
               {example.scene}
             </span>
@@ -256,10 +256,10 @@ function OfferTab({
       tabIndex={selected ? 0 : -1}
       data-component={selected ? "button-primary" : "button"}
       onClick={onSelect}
-      className={`flex h-full w-[min(72vw,16rem)] shrink-0 snap-start flex-col items-start gap-2 border-b-2 px-4 py-4 text-left text-surface lg:w-auto ${focusRing} ${
+      className={`flex h-full w-[min(72vw,16rem)] shrink-0 snap-start flex-col items-start gap-2 border-b-2 px-4 py-4 text-left text-secondary lg:w-auto ${focusRing} ${
         selected
-          ? "border-primary bg-primary/15"
-          : "border-transparent hover:bg-white/[0.06]"
+          ? "border-primary bg-primary/10"
+          : "border-transparent bg-secondary/[0.03] hover:bg-primary/5"
       }`}
     >
       <OfferIcon
@@ -268,7 +268,7 @@ function OfferTab({
       />
       <span className="text-base font-semibold leading-snug">{offer.title}</span>
       {offer.price ? (
-        <span className="text-xs font-bold text-primary-100">{offer.price.label}</span>
+        <span className="text-xs font-bold text-secondary/80">{offer.price.label}</span>
       ) : null}
     </button>
   );

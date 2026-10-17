@@ -29,7 +29,7 @@ export function HomePersonas() {
       aria-labelledby="home-personas-title"
       className="bg-primary-100/25 pt-16 text-secondary sm:pt-20"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 max-lg:px-4">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-3xl">
             <span className="mb-3 block h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
@@ -53,13 +53,13 @@ export function HomePersonas() {
           ref={trackRef}
           data-component="grid"
           aria-label="Profils clients Alfa"
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] md:grid md:grid-cols-3 md:snap-none md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] md:grid md:grid-cols-3 md:snap-none md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden max-md:-mx-4 max-md:w-[calc(100%+2rem)] max-md:scroll-px-4 max-md:px-4"
         >
           {personas.items.map((persona) => (
             <li
               key={persona.id}
               data-persona-card
-              className="w-[min(85vw,22rem)] shrink-0 snap-start md:w-auto"
+              className="w-[min(85vw,22rem)] shrink-0 snap-start md:w-auto max-md:w-[min(calc(100%-2.25rem),22rem)]"
             >
               <article
                 data-component="card"

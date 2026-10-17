@@ -125,7 +125,7 @@ export function HomeHero() {
       aria-labelledby="home-hero-title"
       className="bg-hero text-secondary"
     >
-      <div className="mx-auto grid w-full max-w-[calc(72rem+200px)] items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
+      <div className="mx-auto grid w-full max-w-[calc(72rem+200px)] items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20 max-lg:min-[48rem]:grid-cols-2">
         <div className="min-w-0 border-l-4 border-primary pl-4 sm:pl-6 lg:col-span-6">
           <p className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-secondary/80 uppercase sm:text-sm">
             <span aria-hidden="true" className="size-2 rounded-full bg-primary" />
@@ -155,7 +155,7 @@ export function HomeHero() {
             </span>
             <a
               href={seat.phoneHref}
-              className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-secondary/15 bg-surface px-3.5 py-1.5 font-semibold text-secondary transition-colors hover:border-primary hover:bg-primary-100/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
+              className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-secondary/15 bg-surface px-3.5 py-1.5 font-semibold text-secondary transition-colors hover:border-primary hover:bg-primary-100/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none max-lg:min-h-11"
             >
               <PhoneCallIcon />
               <span>{seat.phoneDisplay}</span>
@@ -163,7 +163,7 @@ export function HomeHero() {
           </div>
         </div>
 
-        <div className="relative h-72 min-w-0 sm:h-[26rem] lg:col-span-6 lg:h-[30rem]">
+        <div className="relative h-72 min-w-0 sm:h-[26rem] lg:col-span-6 lg:h-[30rem] max-md:!h-52">
           <div
             aria-hidden="true"
             className="absolute inset-x-4 inset-y-6 rounded-3xl bg-primary-100/70 sm:inset-x-6 sm:inset-y-8 sm:rounded-[2rem]"
