@@ -74,9 +74,13 @@ export function HomeOffers() {
     <section
       data-section="Offres"
       aria-labelledby="home-offers-title"
-      className="bg-gradient-to-b from-[#e6fffc] to-white py-16 text-secondary sm:py-20"
+      className="relative bg-surface py-16 text-secondary sm:py-20"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-8">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-primary-100/25 to-surface"
+      />
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-8">
         <div className="flex flex-col items-end gap-2 text-right">
           <span className="h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
           <h2
@@ -87,7 +91,7 @@ export function HomeOffers() {
           </h2>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-secondary/12 bg-surface shadow-xs">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-secondary text-surface">
           <div
             role="tablist"
             aria-label="Offres Alfa"
@@ -115,7 +119,7 @@ export function HomeOffers() {
             id="home-offers-panel"
             aria-labelledby={`offer-tab-${selected.id}`}
             data-component="card"
-            className="grid gap-6 border-t border-secondary/10 p-5 sm:p-6 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-10"
+            className="grid gap-6 border-t border-white/10 p-5 sm:p-6 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-10"
           >
             <div className="flex flex-col gap-3">
               <OfferIcon id={selected.id} className="bg-primary text-secondary" />
@@ -126,11 +130,11 @@ export function HomeOffers() {
               ) : null}
               <h3 className="text-2xl font-semibold tracking-tight">{selected.title}</h3>
               {selected.price ? (
-                <p className="inline-flex w-fit items-center rounded-lg bg-primary/15 px-3 py-1.5 text-sm font-bold">
+                <p className="inline-flex w-fit items-center rounded-lg bg-primary/20 px-3 py-1.5 text-sm font-bold text-primary-100">
                   {selected.price.label}
                 </p>
               ) : null}
-              <p className="text-sm leading-relaxed text-secondary/85 sm:text-base">
+              <p className="text-sm leading-relaxed text-surface/85 sm:text-base">
                 {selected.intro}
               </p>
             </div>
@@ -138,14 +142,14 @@ export function HomeOffers() {
               {selected.bullets.map((bullet) => (
                 <li
                   key={bullet}
-                  className="flex items-start gap-2.5 rounded-xl bg-primary/8 px-3 py-2.5 text-sm leading-snug"
+                  className="flex items-start gap-2.5 rounded-xl bg-white/[0.06] px-3 py-2.5 text-sm leading-snug"
                 >
                   <CheckIcon />
                   <span>{bullet}</span>
                 </li>
               ))}
             </ul>
-            <OfferExamples id={selected.id} examples={selected.examples} tone="light" />
+            <OfferExamples id={selected.id} examples={selected.examples} tone="dark" />
           </div>
         </div>
 
@@ -154,7 +158,7 @@ export function HomeOffers() {
             aria-label={customOffer.title}
             data-component="card"
             data-motion="offer-card"
-            className="offer-card flex flex-col gap-6 rounded-2xl border border-primary/30 bg-secondary p-6 text-surface transition-[translate] duration-200 ease-out hover:-translate-y-0.5 sm:p-8"
+            className="offer-card flex flex-col gap-6 rounded-2xl border border-primary/40 bg-secondary p-6 text-surface transition-[translate] duration-200 ease-out hover:-translate-y-0.5 sm:p-8"
           >
             <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
               <div className="flex max-w-2xl items-start gap-4">
@@ -252,10 +256,10 @@ function OfferTab({
       tabIndex={selected ? 0 : -1}
       data-component={selected ? "button-primary" : "button"}
       onClick={onSelect}
-      className={`flex h-full w-[min(72vw,16rem)] shrink-0 snap-start flex-col items-start gap-2 border-b-2 px-4 py-4 text-left lg:w-auto ${focusRing} ${
+      className={`flex h-full w-[min(72vw,16rem)] shrink-0 snap-start flex-col items-start gap-2 border-b-2 px-4 py-4 text-left text-surface lg:w-auto ${focusRing} ${
         selected
-          ? "border-primary bg-primary/10"
-          : "border-transparent bg-secondary/[0.03] hover:bg-primary/5"
+          ? "border-primary bg-primary/15"
+          : "border-transparent hover:bg-white/[0.06]"
       }`}
     >
       <OfferIcon
@@ -264,7 +268,7 @@ function OfferTab({
       />
       <span className="text-base font-semibold leading-snug">{offer.title}</span>
       {offer.price ? (
-        <span className="text-xs font-bold text-secondary/80">{offer.price.label}</span>
+        <span className="text-xs font-bold text-primary-100">{offer.price.label}</span>
       ) : null}
     </button>
   );

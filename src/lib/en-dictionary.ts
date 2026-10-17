@@ -29,6 +29,8 @@ export const enDictionary: Record<string, string> = {
   "Salles de réunion": "Meeting rooms",
   "Bureaux ponctuel et salle de réunion": "Occasional offices and meeting rooms",
   Articles: "Articles",
+  Services: "Services",
+  "Tous les services": "All services",
   "Concentrez-vous sur l’essentiel": "Focus on what matters",
   "Trouvez la solution complète pour tous vos besoins professionnels.":
     "Find the complete solution for every professional need.",
@@ -38,6 +40,7 @@ export const enDictionary: Record<string, string> = {
   "Trouvez le service qui vous correspond": "Find the service that fits you",
   "Concentrez-vous sur votre activité, nous nous occupons du reste.":
     "Focus on your work. We take care of the rest.",
+  "Actualités Alfa": "Alfa news",
   "Mentions légales": "Legal notice",
   "Politique de Confidentialité": "Privacy policy",
   "20 espaces": "20 spaces",

@@ -66,6 +66,10 @@ function publishNewsPrompt(open: boolean) {
   newsPromptListeners.forEach((listener) => listener());
 }
 
+export function openNewsPrompt() {
+  publishNewsPrompt(true);
+}
+
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
 

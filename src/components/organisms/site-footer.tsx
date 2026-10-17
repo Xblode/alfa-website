@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useHomeContent, useTranslate } from "@/components/content-provider";
+import { openNewsPrompt } from "@/components/organisms/news-prompt";
 import { HomeLink } from "@/components/ui/home-link";
 
 const focusRing =
@@ -135,6 +136,16 @@ export function SiteFooter() {
           <p>© 2026 {brand.name}. {t("Tous droits réservés.")}</p>
           <nav aria-label="Informations légales" data-component="nav">
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              <li>
+                <button
+                  type="button"
+                  data-name="Actualités Alfa"
+                  onClick={openNewsPrompt}
+                  className={`transition-colors hover:text-white ${focusRing}`}
+                >
+                  {t("Actualités Alfa")}
+                </button>
+              </li>
               {legal.map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className={`transition-colors hover:text-white ${focusRing}`}>{item.label}</a>

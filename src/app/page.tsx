@@ -9,7 +9,6 @@ import { HomePromises } from "@/components/organisms/home-promises";
 import { HomeReviews } from "@/components/organisms/home-reviews";
 import { HomeServices } from "@/components/organisms/home-services";
 import { HomeSpaces } from "@/components/organisms/home-spaces";
-import { NewsPrompt } from "@/components/organisms/news-prompt";
 import { SiteFrame } from "@/components/organisms/site-frame";
 
 export default function HomePage() {
@@ -28,7 +27,6 @@ export default function HomePage() {
         <HomeFaq />
         <HomeContactBanner />
       </SiteFrame>
-      <NewsPrompt />
     </>
   );
 }
