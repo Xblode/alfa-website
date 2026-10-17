@@ -1,0 +1,19 @@
+---
+description: Protections permanentes pour toutes les opérations ClickUp de ce projet.
+alwaysApply: true
+---
+
+# ClickUp Write Guard
+
+- Suivre `docs/06-delivery/CLICKUP_CONVENTION.md`. Le complément web est `docs/06-delivery/CLICKUP.md`.
+- Pour préparer ou créer des tâches, invoquer le skill `clickup-from-context`.
+- L'analyse du contexte et la création d'un lot sont distinctes de son exécution.
+- Ne jamais écrire dans ClickUp avant une approbation explicite de l'utilisateur pour le lot exact présenté.
+- Par défaut, limiter toute action à l'espace `Projets` et au dossier du projet identifié avec son nom exact. Ne pas accéder à `Mon organisation` sans autorisation spécifique.
+- La commande d'ajout de tâches ne crée pas de document. La création et la modification d'un document ClickUp sont un lot séparé : le montrer, attendre un oui, puis l'écrire dans le sous-dossier `docs`.
+- Sur le plan gratuit, un document est public dans le workspace. Ne pas y mettre de secret. Ne pas envoyer une visibilité privée.
+- Lire la liste et ses statuts réels avant une création. Ne pas configurer les statuts ou choisir une destination approximative.
+- Vérifier les doublons par identifiant, titre, résultat attendu et critères de fin.
+- Si une opération a un résultat incertain, vérifier si elle a réussi avant de la retenter.
+- N'inventer ni dates, estimations, priorité, responsable, résultats d'outil, ni accès au contexte absent.
+- Restituer les liens et identifiants réellement retournés par ClickUp.

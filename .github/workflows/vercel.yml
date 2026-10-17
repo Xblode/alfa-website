@@ -1,0 +1,70 @@
+# Déploiement production sur push vers main.
+# Mécanisme vérifié dans la documentation Vercel (GitHub Actions + Vercel CLI) :
+# vercel pull, vercel build --prod, vercel deploy --prebuilt --prod.
+# L'action tierce amondnet/vercel-action@v20 citée dans le résumé exécutif n'est pas utilisée.
+# Sans application Next.js dans le checkout, le job se termine sans déployer.
+# Si l'intégration Git Vercel est aussi active, ajouter "git": { "deploymentEnabled": false }
+# dans vercel.json, sinon chaque push déploie deux fois.
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect Next.js app
+        id: detect
+        run: |
+          if [ -f package.json ] && grep -Eq '"next"[[:space:]]*:' package.json; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No Next.js dependency in package.json; production deploy skipped."
+          fi
+
+      - name: Check required secrets
+        if: steps.detect.outputs.present == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          missing=""
+          for name in VERCEL_TOKEN VERCEL_ORG_ID VERCEL_PROJECT_ID; do
+            if [ -z "${!name}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing GitHub secrets:$missing. Add them in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install Vercel CLI
+        if: steps.detect.outputs.present == 'true'
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel environment
+        if: steps.detect.outputs.present == 'true'
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project artifacts
+        if: steps.detect.outputs.present == 'true'
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy project artifacts
+        if: steps.detect.outputs.present == 'true'
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

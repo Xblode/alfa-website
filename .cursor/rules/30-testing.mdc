@@ -1,0 +1,12 @@
+---
+description: Tests, critères d'acceptation et vérification des changements
+globs: "**/*.test.*,**/*.spec.*"
+alwaysApply: false
+---
+
+- Lier les tests à un comportement attendu ou à un risque identifié.
+- Tester les cas nominaux, limites, erreurs et permissions selon la surface de risque.
+- Garder les tests déterministes ; ne pas masquer un échec via un skip ou un mock excessif.
+- Lors d'une correction, ajouter ou adapter un test qui échouerait avant le correctif lorsque c'est raisonnable.
+- Exécuter le test le plus ciblé, puis les contrôles plus larges pertinents.
+- Rapporter les tests ignorés, les limites de couverture et toute vérification impossible.

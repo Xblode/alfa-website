@@ -1,0 +1,20 @@
+---
+description: Conventions Next.js App Router du profil par défaut
+globs: "**/next.config.*,**/app/**/page.tsx,**/app/**/layout.tsx,**/app/**/loading.tsx,**/app/**/error.tsx,**/app/**/not-found.tsx,**/app/**/route.ts,**/robots.ts,**/sitemap.ts,**/components/**/*.tsx"
+alwaysApply: false
+---
+
+# Next.js App Router
+
+S'applique aux fichiers Next.js. Un thème Shopify ou WordPress suit ses conventions natives.
+
+- Une route a un `page.tsx`. Ajouter `loading.tsx`, `error.tsx` et `not-found.tsx` quand la route a un chargement, une erreur ou un 404 propre.
+- SEO : `app/robots.ts` et `app/sitemap.ts`. Le fichier servi est généré ; ce n'est pas un `sitemap.xml` écrit à la main.
+- `layout.tsx` organise l'interface. Un layout ou un sous-domaine ne remplace pas un contrôle d'accès serveur.
+- Composants partagés : `src/components/atoms`, `molecules`, `organisms`. Composant d'une seule route : dossier de la route.
+- Primitive de design system : `src/components/ui`. Transversal : `src/components/shared`.
+- Fonctionnalité qui a sa logique, ses types et ses schémas : `src/features/<feature>/`.
+- Utilitaire transversal : `src/lib/`. Accès données et secrets : couche serveur.
+- Structure minimale : `src/app`, `src/components/ui`, `src/lib`.
+- Structure avancée : groupes de routes, `features/`, `sections/`, seulement si plusieurs espaces ou responsabilités le justifient.
+- Découper un composant qui mélange plusieurs responsabilités. Repère du profil React : viser moins de 150 lignes.

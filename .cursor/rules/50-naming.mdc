@@ -1,0 +1,15 @@
+---
+description: Nommage des fichiers, composants et identifiants
+alwaysApply: true
+---
+
+# Nommage
+
+- Fichiers et dossiers : kebab-case (`user-profile.tsx`).
+- Composants React exportés : PascalCase (`export function UserProfile`).
+- Variables et fonctions : camelCase.
+- Colonnes Postgres : snake_case.
+- Fichiers réservés du framework : nom officiel (`page.tsx`, `layout.tsx`, `robots.ts`).
+- Fichiers du kit (`AGENTS.md`, `SKILL.md`, documents de `docs/`) : garder le nom existant.
+- Un composant propre à une route vit dans le dossier de cette route.
+- Préférer une variante d'un composant existant à un quasi-doublon.

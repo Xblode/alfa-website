@@ -1,0 +1,12 @@
+---
+description: Conventions d'un thème ou d'une intégration WordPress
+globs: "**/*.php,**/theme.json"
+alwaysApply: false
+---
+
+- Déclarer la variante : thème classique, block theme, child theme ou headless.
+- Échapper les sorties, assainir les entrées, utiliser des requêtes préparées et vérifier les capabilities.
+- Protéger les actions de formulaire avec un nonce et un contrôle de permission.
+- Enregistrer styles et scripts avec les API WordPress.
+- Un child theme conserve le thème parent à jour. Le headless consomme l'API WordPress ; les permissions restent dans WordPress.
+- Ne pas ajouter Supabase tant que le TRD ne l'a pas décidé.

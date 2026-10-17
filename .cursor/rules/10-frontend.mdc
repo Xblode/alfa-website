@@ -1,0 +1,14 @@
+---
+description: Conventions frontend, accessibilité et états d'interface
+globs: "**/*.tsx,**/*.jsx,**/*.css,**/*.scss"
+alwaysApply: false
+---
+
+- Lire `docs/02-design/APP_FLOW.md`, `UI_UX_SPEC.md` et `DESIGN_SYSTEM.md` avant de modifier une interface.
+- Profil React/Next.js : Tailwind CSS, shadcn/ui si une bibliothèque de composants est retenue, composants partagés en atoms / molecules / organisms.
+- Un composant propre à une route reste dans le dossier de cette route. Préférer une variante à un quasi-doublon.
+- Prévoir loading, success, empty, error, disabled, permissions insuffisantes et responsive lorsque l'écran les rencontre.
+- HTML sémantique, clavier, focus visible, labels et messages d'erreur compréhensibles. Point de départ : WCAG 2.2 AA, à confirmer dans le projet.
+- Découper un composant qui mélange plusieurs responsabilités. Repère du profil React : viser moins de 150 lignes.
+- Aucun secret ni clé privée dans le code frontend. `SUPABASE_SERVICE_ROLE_KEY` reste serveur.
+- Le contenu fictif reste identifié comme fixture ou démonstration.

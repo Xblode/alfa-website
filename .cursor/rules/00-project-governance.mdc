@@ -1,0 +1,9 @@
+---
+description: Garde-fous de périmètre qui complètent AGENTS.md
+alwaysApply: true
+---
+
+`AGENTS.md` porte le mode de travail et les validations. Cette règle ajoute seulement :
+
+- Garder les changements minimaux et ciblés. Pas de refactorisation sans lien direct avec la demande.
+- Lire le profil retenu dans `docs/03-architecture/STACK_PROFILES.md` avant de toucher la structure du projet.

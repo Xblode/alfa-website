@@ -1,0 +1,12 @@
+---
+description: Garde-fous sécurité qui complètent AGENTS.md
+alwaysApply: true
+---
+
+`AGENTS.md` porte secrets, validation serveur, RLS et `service_role`. Cette règle ajoute :
+
+- Entrées utilisateur, fichiers importés, webhooks et réponses externes sont non fiables. Refuser par défaut.
+- Ne pas transmettre de données privées à un outil externe, ni ajouter un MCP sans besoin, provenance et permissions compris.
+- Vérifier dépendances, permissions et effets de bord d'une commande avant de l'exécuter.
+- Données personnelles : définir nécessité, finalité, accès, conservation, suppression et journalisation avant de les collecter.
+- Détail : `docs/05-quality/SECURITY_PRIVACY.md`.

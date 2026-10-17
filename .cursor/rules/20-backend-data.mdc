@@ -1,0 +1,15 @@
+---
+description: Règles pour services, API, persistance et migrations
+globs: "**/api/**,**/server/**,**/backend/**,**/db/**,**/database/**,**/prisma/**,**/supabase/**,**/actions.ts,**/*.sql"
+alwaysApply: false
+---
+
+- Lire `docs/03-architecture/TRD.md`, `docs/04-data/DATA_MODEL.md` et `API_CONTRACTS.md` avant de modifier le backend ou la base.
+- Profil par défaut : Postgres et Auth via Supabase. Les requêtes protégées passent par le serveur.
+- Contrôle d'accès serveur sur chaque opération protégée. La validation client ne suffit pas.
+- Valider les entrées aux frontières de confiance. Les erreurs renvoyées ne contiennent ni pile, ni secret, ni détail interne.
+- Table exposée au client Supabase : politique RLS activée et testée. Refus par défaut.
+- `SUPABASE_SERVICE_ROLE_KEY` uniquement côté serveur. Jamais dans un composant, un `NEXT_PUBLIC_*` ou le navigateur.
+- Migrations versionnées, relisibles, avec stratégie de déploiement et de retour arrière. `supabase db push` modifie la base liée.
+- Mettre à jour le modèle et les contrats si les noms, contraintes ou relations changent.
+- Ne pas désactiver RLS ou un contrôle d'accès pour faire passer un test.

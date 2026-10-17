@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="79.098" height="86.671" viewBox="0 0 79.098 86.671">
+  <g id="Groupe_569" data-name="Groupe 569" transform="translate(-898.902 -964)">
+    <path id="Tracé_435" data-name="Tracé 435" d="M103.743,59.306l8.128-8.53L103.759,41.8H76.081V39.02h9.228V21.513H76.081V9.49H68.319V21.513H40.9l-8.129,8.531,8.112,8.977H68.319V41.8H59.336V59.306h8.984v3.032H40.9l-8.129,8.531,8.112,8.977H68.319V96.161h7.762V79.846h9.228V62.338H76.081V59.306ZM70.368,11.539h3.664v9.974H70.368ZM41.8,36.972,35.567,30.08l6.212-6.519H83.26v13.41H41.8ZM74.032,39.02V41.8H70.368V39.02Zm0,55.092H70.368V79.846h3.664ZM83.26,64.387V77.8H41.8l-6.228-6.892,6.212-6.519H83.26ZM70.368,62.338V59.306h3.664v3.032Zm3.664-5.081H61.384V43.847h41.465l6.228,6.892-6.212,6.519H74.032Z" transform="translate(866.129 954.51)" fill="#282828"/>
+    <text id="gare" transform="translate(927.5 988)" fill="#03a696" font-size="11" font-family="Install-Regular, Install" letter-spacing="0.05em"><tspan x="-12.842" y="0">gare</tspan></text>
+    <text id="Musée" transform="translate(949.5 1008)" fill="#282828" font-size="11" font-family="Install-Regular, Install" letter-spacing="0.05em"><tspan x="-17.556" y="0">Musée</tspan></text>
+    <text id="Centre" transform="translate(927.5 1029)" fill="#282828" font-size="11" font-family="Install-Regular, Install" letter-spacing="0.05em"><tspan x="-17.847" y="0">Centre</tspan></text>
+  </g>
+</svg>

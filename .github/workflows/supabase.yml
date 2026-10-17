@@ -1,0 +1,69 @@
+# Applique les migrations locales au projet Supabase lié, sur push vers main.
+# Forme actuelle documentée par Supabase : supabase link, puis supabase db push.
+# Le drapeau --project-id du résumé exécutif n'est pas celui de la CLI actuelle.
+# Sans supabase/config.toml, seul le job detect tourne et rien ne touche un projet distant.
+# Le job deploy utilise l'environnement GitHub "production". L'accord n'est exigé que si cet
+# environnement a des relecteurs obligatoires : Settings > Environments > production > Required reviewers.
+# Sans ce réglage, GitHub crée l'environnement sans protection et db push part sans attendre.
+
+name: Deploy Supabase migrations
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-migrations
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      present: ${{ steps.detect.outputs.present }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect Supabase project
+        id: detect
+        run: |
+          if [ -f supabase/config.toml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No supabase/config.toml; remote migration push skipped."
+          fi
+
+  deploy:
+    needs: detect
+    if: needs.detect.outputs.present == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required secrets
+        run: |
+          missing=""
+          for name in SUPABASE_ACCESS_TOKEN SUPABASE_DB_PASSWORD SUPABASE_PROJECT_ID; do
+            if [ -z "${!name}" ]; then missing="$missing $name"; fi
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Missing GitHub secrets:$missing. Add them in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - uses: supabase/setup-cli@v3
+
+      - name: Link and push migrations
+        run: |
+          supabase link --project-ref "$SUPABASE_PROJECT_ID"
+          supabase db push

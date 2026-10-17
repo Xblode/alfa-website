@@ -1,0 +1,11 @@
+---
+description: Conventions d'un thème Shopify natif
+globs: "**/*.liquid,**/sections/**/*.json,**/templates/**/*.json,**/blocks/**/*.json"
+alwaysApply: false
+---
+
+- Thème natif : Liquid, sections, blocs et templates JSON. Le paiement et le panier restent ceux de Shopify.
+- Une boutique headless suit le profil Commerce. Elle n'utilise cette règle que pour les fichiers de thème qu'elle contient encore.
+- Rendre les réglages éditables dans le schéma de section. Textes marchands dans les fichiers de locale.
+- Ne pas ajouter Next.js, Supabase ou une base parallèle pour remplacer l'admin Shopify.
+- Lancer `shopify theme check` lorsque Shopify CLI est installé, et rapporter le résultat réel.
