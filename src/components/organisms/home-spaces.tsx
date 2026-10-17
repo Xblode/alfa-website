@@ -214,7 +214,7 @@ export function HomeSpaces() {
             <ul
               data-motion="space-track"
               style={{ "--space-index": activeIndex } as CSSProperties}
-              className="flex [--space-step:100%] [transform:translate3d(calc(var(--space-index)*var(--space-step)*-1),0,0)] transition-transform duration-200 ease-out motion-reduce:transition-none md:[--space-step:25%]"
+              className="flex [--space-step:66.666%] [transform:translate3d(calc(var(--space-index)*var(--space-step)*-1),0,0)] transition-transform duration-200 ease-out motion-reduce:transition-none md:[--space-step:25%]"
             >
               {visible.map((item) => (
                 <li
@@ -222,7 +222,7 @@ export function HomeSpaces() {
                   className={
                     visible.length === 1
                       ? "w-full shrink-0 px-2 md:w-1/4 max-lg:!w-full"
-                      : "w-full shrink-0 px-2 md:w-1/4"
+                      : "w-[66.666%] shrink-0 px-2 md:w-1/4"
                   }
                 >
                   <SpaceCard space={item} />
