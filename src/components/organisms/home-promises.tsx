@@ -68,7 +68,7 @@ export function HomePromises() {
   return (
     <section
       data-section="Promesses"
-      className="relative isolate overflow-hidden bg-[#e6fffc] text-secondary"
+      className="relative isolate overflow-hidden bg-surface text-secondary"
     >
       <SectionShapes variant="promises" />
       <ul className="relative z-10 mx-auto grid max-w-[calc(72rem+200px)] grid-cols-1 gap-6 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">
