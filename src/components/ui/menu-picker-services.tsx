@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, useState, type FocusEvent } from "react";
 import { ServiceGlyph, type ServiceIconId } from "@/components/organisms/home-services-icons";
-import { useTranslate } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 import type { MenuPickerItem } from "./menu-picker";
 
 const focusRing =
@@ -29,7 +29,7 @@ export function ServiceMenu({
   labelledBy: string;
   onChoose: () => void;
 }) {
-  const t = useTranslate();
+  const { ui } = useDictionary();
   const panelRef = useRef<HTMLDivElement>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = items.find((item) => item.id === activeId) ?? null;
@@ -47,9 +47,9 @@ export function ServiceMenu({
       className="grid gap-4 sm:grid-cols-[14rem_1fr]"
       onMouseLeave={() => setActiveId(null)}
     >
-      <div role="group" aria-label={t("Services")}>
+      <div role="group" aria-label={ui.serviceMenu.services}>
         <p className="px-1 pb-2 text-xs font-bold tracking-wide text-secondary/60 uppercase">
-          {t("Services")}
+          {ui.serviceMenu.services}
         </p>
         <ul className="grid list-none gap-1 p-0">
           {items.map((item) => {
@@ -83,7 +83,7 @@ export function ServiceMenu({
 
       <div>
         <p className="px-1 pb-2 text-xs font-bold tracking-wide text-secondary/60 uppercase">
-          {active ? active.title : t("Tous les services")}
+          {active ? active.title : ui.serviceMenu.allServices}
         </p>
         <ul aria-labelledby={labelledBy} className={`grid list-none gap-2 p-0 ${active ? "" : "sm:grid-cols-2"}`}>
           {(active ? [active] : items).map((item) => (
@@ -130,7 +130,7 @@ function ServicePreview({
             : "flex flex-col gap-0.5 p-2.5 text-secondary"
         }
       >
-        <span className={`font-heading font-bold ${featured ? "text-lg" : "text-sm"}`}>{item.title}</span>
+        <span className={`font-heading font-bold ${featured ? "text-xl" : "text-sm"}`}>{item.title}</span>
         {featured ? <span className="line-clamp-3 text-sm leading-snug text-white/85">{item.summary}</span> : null}
       </span>
     </a>

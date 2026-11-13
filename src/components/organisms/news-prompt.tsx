@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useSyncExternalStore } from "react";
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 
 const VISIT_COUNT_KEY = "alfa-visit-count";
 
@@ -82,7 +82,8 @@ export function NewsPrompt() {
   const titleId = useId();
   const emailId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
-  const homeContent = useHomeContent();
+  const homeContent = useDictionary();
+  const { ui } = homeContent;
   const { facebook, instagram } = homeContent.social;
 
   useEffect(() => {
@@ -165,10 +166,10 @@ export function NewsPrompt() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold tracking-wider text-primary uppercase">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-              Communauté Alfa
+              {ui.newsPrompt.badge}
             </span>
             <h2 id={titleId} className="mt-2.5 font-heading text-2xl font-semibold tracking-tight text-secondary sm:text-3xl">
-              Actualités Alfa
+              {ui.newsPrompt.title}
             </h2>
           </div>
           <button
@@ -176,7 +177,7 @@ export function NewsPrompt() {
             onClick={close}
             className="inline-flex items-center gap-1.5 rounded-full border border-secondary/15 bg-surface px-3.5 py-2 text-xs font-semibold text-secondary transition-colors hover:border-secondary/30 hover:bg-secondary/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            <span>Fermer</span>
+            <span>{ui.common.close}</span>
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l8 8M14 6l-8 8" />
             </svg>
@@ -190,7 +191,7 @@ export function NewsPrompt() {
                 01
               </span>
               <p className="flex-1 font-heading text-lg font-semibold text-secondary">
-                Suivre les réseaux
+                {ui.newsPrompt.followTitle}
               </p>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
@@ -201,7 +202,7 @@ export function NewsPrompt() {
                 className="inline-flex items-center justify-between rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <span>Facebook</span>
-                <span className="sr-only"> (nouvel onglet)</span>
+                <span className="sr-only"> {ui.common.newTab}</span>
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 14L14 6M8 6h6v6" />
                 </svg>
@@ -213,7 +214,7 @@ export function NewsPrompt() {
                 className="inline-flex items-center justify-between rounded-xl border border-primary/30 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-secondary transition-colors hover:bg-primary/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <span>Instagram</span>
-                <span className="sr-only"> (nouvel onglet)</span>
+                <span className="sr-only"> {ui.common.newTab}</span>
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4 text-primary" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 14L14 6M8 6h6v6" />
                 </svg>
@@ -232,26 +233,26 @@ export function NewsPrompt() {
                   02
                 </span>
                 <p className="flex-1 font-heading text-lg font-semibold text-secondary">
-                  Laisser un e-mail
+                  {ui.newsPrompt.emailTitle}
                 </p>
               </div>
               <div className="mt-4">
                 <label htmlFor={emailId} className="block text-xs font-semibold tracking-wide text-secondary/80 uppercase">
-                  Adresse e-mail
+                  {ui.newsPrompt.emailLabel}
                 </label>
                 <div className="mt-1.5 flex flex-col gap-2.5 sm:flex-row">
                   <input
                     id={emailId}
                     type="email"
                     autoComplete="email"
-                    placeholder="nom@entreprise.fr"
+                    placeholder={ui.newsPrompt.emailPlaceholder}
                     className="w-full flex-1 rounded-xl border border-secondary/20 bg-surface px-3.5 py-2.5 text-sm text-secondary placeholder:text-secondary/45 focus-visible:border-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   />
                   <button
                     type="submit"
                     className="shrink-0 rounded-xl bg-secondary px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
-                    Laisser un e-mail
+                    {ui.newsPrompt.emailSubmit}
                   </button>
                 </div>
               </div>
@@ -266,7 +267,7 @@ export function NewsPrompt() {
                 </span>
                 <div>
                   <p className="font-heading text-lg font-semibold text-secondary">
-                    Message Instagram
+                    {ui.newsPrompt.messageTitle}
                   </p>
                   <p className="text-xs text-secondary/70">
                     @{homeContent.social.instagramHandle}
@@ -279,8 +280,8 @@ export function NewsPrompt() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
-                <span>Envoyer un message Instagram</span>
-                <span className="sr-only"> (nouvel onglet)</span>
+                <span>{ui.newsPrompt.messageButton}</span>
+                <span className="sr-only"> {ui.common.newTab}</span>
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 14L14 6M8 6h6v6" />
                 </svg>

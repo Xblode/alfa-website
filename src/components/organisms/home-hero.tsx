@@ -1,63 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useHomeContent, useTranslate } from "@/components/content-provider";
-
-const cityPrefix = "Votre centre d'affaires proche à";
-
-function orderedCities(cities: readonly string[]) {
-  const unique = [...new Set(cities)];
-  const lead = ["Rouen", "Le Havre"].filter((city) => unique.includes(city));
-  return [...lead, ...unique.filter((city) => !lead.includes(city))];
-}
-
-function TypedCity({ cities }: { cities: readonly string[] }) {
-  const [index, setIndex] = useState(0);
-  const [count, setCount] = useState(cities[0]?.length ?? 0);
-  const [phase, setPhase] = useState<"type" | "hold" | "delete" | "gap">("hold");
-  const word = cities[index] ?? "";
-  const shown = word.slice(0, count);
-  const longest = cities.reduce((current, city) => (city.length > current.length ? city : current), "");
-
-  useEffect(() => {
-    if (cities.length === 0) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const current = cities[index] ?? "";
-    const delay = phase === "hold" ? 1600 : phase === "delete" ? 42 : phase === "gap" ? 280 : 75;
-    const timer = window.setTimeout(() => {
-      if (phase === "hold") {
-        setPhase("delete");
-        return;
-      }
-      if (phase === "delete") {
-        if (count === 0) setPhase("gap");
-        else setCount((value) => value - 1);
-        return;
-      }
-      if (phase === "gap") {
-        setIndex((value) => (value + 1) % cities.length);
-        setPhase("type");
-        return;
-      }
-      if (count >= current.length) setPhase("hold");
-      else setCount((value) => value + 1);
-    }, delay);
-    return () => window.clearTimeout(timer);
-  }, [cities, count, index, phase]);
-
-  return (
-    <span className="inline-grid align-bottom">
-      <span aria-hidden="true" className="invisible col-start-1 row-start-1 font-semibold">
-        {longest}
-      </span>
-      <span className="col-start-1 row-start-1 font-semibold text-primary" aria-hidden="true">
-        {shown}
-        <span className="ml-px inline-block h-[0.9em] w-px translate-y-px animate-pulse bg-primary motion-reduce:hidden" />
-      </span>
-    </span>
-  );
-}
+import { useDictionary } from "@/components/content-provider";
+import type { Dictionary } from "@/content";
 
 function HeroTitle({ text, emphasis }: { text: string; emphasis: string }) {
   const index = text.indexOf(emphasis);
@@ -74,23 +19,36 @@ function HeroTitle({ text, emphasis }: { text: string; emphasis: string }) {
   );
 }
 
-function LocationPinIcon() {
+function CheckIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className="size-4 shrink-0 text-primary"
-    >
-      <path
-        d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 1 1 13 0c0 5.2-6.5 11-6.5 11Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="12" cy="10" r="2.25" fill="currentColor" />
+    <svg viewBox="0 0 24 24" aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-primary">
+      <path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
+  );
+}
+
+function HeroRating({ rating }: { rating: NonNullable<Dictionary["hero"]["rating"]> }) {
+  const { ui } = useDictionary();
+  const full = Math.round(rating.score);
+  return (
+    <a
+      href={rating.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-secondary/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
+    >
+      <span aria-hidden="true" className="flex text-primary">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <svg key={n} viewBox="0 0 20 20" className="size-4">
+            <path d="m10 2.6 2.1 4.3 4.7.7-3.4 3.3.8 4.7L10 13.4 5.8 15.6l.8-4.7L3.2 7.6l4.7-.7L10 2.6Z" fill={n <= full ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+          </svg>
+        ))}
+      </span>
+      <span>
+        {ui.hero.ratingLabel} <strong>{rating.score} / 5</strong> {ui.hero.ratingOn} {rating.count} {ui.hero.ratingReviews}
+        <span className="sr-only">, {rating.source}</span>
+      </span>
+    </a>
   );
 }
 
@@ -99,7 +57,7 @@ function PhoneCallIcon() {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className="size-4 shrink-0 text-primary transition-transform group-hover:scale-105 motion-reduce:transition-none"
+      className="size-5 shrink-0 transition-transform group-hover:scale-105 motion-reduce:transition-none"
     >
       <path
         d="M21 16.4v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.6 5.2 2 2 0 0 1 4.6 3h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.4 2.1L8.6 11a16 16 0 0 0 6.4 6.4l1.4-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7A2 2 0 0 1 21 16.4Z"
@@ -114,11 +72,9 @@ function PhoneCallIcon() {
 }
 
 export function HomeHero() {
-  const t = useTranslate();
-  const { hero, seat, spaces } = useHomeContent();
-  const { title, subtitle, subtitleEmphasis, slides } = hero;
+  const { hero, seat, ui } = useDictionary();
+  const { title, subtitle, subtitleEmphasis, points, rating, slides } = hero;
   const [reception, office, contact] = slides;
-  const cities = orderedCities(spaces.items.map((item) => item.city));
 
   return (
     <section
@@ -127,43 +83,49 @@ export function HomeHero() {
     >
       <div className="mx-auto grid w-full max-w-[calc(72rem+200px)] items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20 max-lg:min-[48rem]:grid-cols-2">
         <div className="min-w-0 border-l-4 border-primary pl-4 sm:pl-6 lg:col-span-6">
-          <p className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-secondary/80 uppercase sm:text-sm">
+          <p className="inline-flex items-center gap-2 text-base font-semibold tracking-wider text-secondary/80 uppercase lg:text-lg">
             <span aria-hidden="true" className="size-2 rounded-full bg-primary" />
             {title}
           </p>
           <h1
             id="home-hero-title"
-            className="mt-3 font-heading text-3xl leading-[1.15] font-semibold text-balance sm:text-4xl lg:text-5xl"
+            className="mt-3 font-heading text-display leading-[1.05] font-semibold text-balance"
           >
             <HeroTitle text={subtitle} emphasis={subtitleEmphasis} />
           </h1>
 
+          <ul className="mt-6 grid gap-2.5 text-base font-medium text-secondary/90 lg:text-lg">
+            {points.map((point) => (
+              <li key={point} className="flex items-start gap-2.5">
+                <CheckIcon />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+          {rating ? <HeroRating rating={rating} /> : null}
+
           <div
-            data-name="Accroche villes"
+            data-name="Accroche centre"
             className="mt-6 flex flex-col items-start gap-3 text-sm text-secondary/85"
           >
-            <span className="inline-flex items-center gap-2 font-medium">
-              <LocationPinIcon />
-              <span>
-                <span className="sr-only">
-                  {t(cityPrefix)} {cities.join(", ")}
-                </span>
-                <span aria-hidden="true">
-                  {t(cityPrefix)} <TypedCity cities={cities} />
-                </span>
-              </span>
-            </span>
-            <a
-              href={seat.phoneHref}
-              className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-secondary/15 bg-surface px-3.5 py-1.5 font-semibold text-secondary transition-colors hover:border-primary hover:bg-primary-100/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none max-lg:min-h-11"
-            >
-              <PhoneCallIcon />
-              <span>{seat.phoneDisplay}</span>
-            </a>
+            <span className="font-medium">{ui.hero.tagline}</span>
+            <div className="flex flex-col items-start gap-1.5">
+              <a
+                href={seat.phoneHref}
+                data-component="button-primary"
+                className="group inline-flex min-h-12 items-center gap-3 rounded-full bg-primary px-6 py-2.5 font-heading font-semibold text-white transition-colors hover:brightness-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none"
+              >
+                <PhoneCallIcon />
+                <span>{ui.hero.talkToAdvisor}</span>
+                <span aria-hidden="true" className="h-5 w-px bg-white/40" />
+                <span className="whitespace-nowrap">{seat.phoneDisplay}</span>
+              </a>
+              <span className="pl-2 text-secondary/75">{ui.hero.hours}</span>
+            </div>
           </div>
         </div>
 
-        <div className="relative h-72 min-w-0 sm:h-[26rem] lg:col-span-6 lg:h-[30rem] max-md:!h-52">
+        <div className="relative h-72 min-w-0 max-md:order-first sm:h-[26rem] lg:col-span-6 lg:h-[30rem] max-md:!h-52">
           <div
             aria-hidden="true"
             className="absolute inset-x-4 inset-y-6 rounded-3xl bg-primary-100/70 sm:inset-x-6 sm:inset-y-8 sm:rounded-[2rem]"

@@ -3,7 +3,7 @@ import type { ServiceFactList } from "@/lib/service-pages";
 export function ServiceFactList({ list }: { list: ServiceFactList }) {
   return (
     <div data-name={list.title} className="mt-6">
-      <h3 className="font-heading text-lg font-semibold">{list.title}</h3>
+      <h3 className="font-heading text-xl font-semibold">{list.title}</h3>
       <p className="mt-1 text-sm font-semibold text-secondary">{list.note}</p>
       <ul className="mt-3 grid gap-2">
         {list.points.map((point) => (

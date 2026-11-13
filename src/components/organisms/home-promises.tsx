@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { SectionShapes } from "@/components/shared/section-shapes";
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 const cycleMs = 2600;
 const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
 
@@ -37,7 +37,7 @@ function promiseText(text: string, emphasis: string) {
 }
 
 export function HomePromises() {
-  const promises = useHomeContent().promises;
+  const { promises } = useDictionary();
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotion,
@@ -68,7 +68,7 @@ export function HomePromises() {
   return (
     <section
       data-section="Promesses"
-      className="relative isolate overflow-hidden bg-surface text-secondary"
+      className="relative isolate overflow-hidden bg-surface text-secondary max-md:hidden"
     >
       <SectionShapes variant="promises" />
       <ul className="relative z-10 mx-auto grid max-w-[calc(72rem+200px)] grid-cols-1 gap-6 px-6 py-14 md:grid-cols-2 lg:grid-cols-4">

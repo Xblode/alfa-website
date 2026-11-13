@@ -1,10 +1,9 @@
 "use client";
 
-import { useHomeContent, useTranslate } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 
 export function HomeReviews() {
-  const t = useTranslate();
-  const { reviews } = useHomeContent();
+  const { reviews, ui } = useDictionary();
   const shown = reviews.items.slice(0, 3);
 
   return (
@@ -19,12 +18,12 @@ export function HomeReviews() {
             <span className="mb-3 block h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
             <h2
               id="home-reviews-title"
-              className="font-heading text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
+              className="font-heading text-section font-semibold tracking-tight text-balance"
             >
               {reviews.title}
             </h2>
-            <p className="mt-4 text-base leading-7 text-secondary/85">{reviews.intro}</p>
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label={t("Notes des avis")}>
+            <p className="mt-4 text-base leading-7 text-secondary/85 lg:text-lg">{reviews.intro}</p>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label={ui.reviews.scoresLabel}>
               {reviews.scores.map((score) => (
                 <li key={score.id}>
                   <p className="inline-flex min-h-11 items-center gap-2 rounded-full border border-secondary/15 bg-surface px-3 text-sm font-semibold">
@@ -39,7 +38,7 @@ export function HomeReviews() {
 
         <ul
           data-component="grid"
-          aria-label={t("Avis clients")}
+          aria-label={ui.reviews.listLabel}
           className="grid gap-5 md:grid-cols-3 max-lg:gap-3"
         >
           {shown.map((review) => (
@@ -57,13 +56,13 @@ export function HomeReviews() {
                     {initials(review.author)}
                   </span>
                   <div>
-                    <p className="font-heading text-base font-semibold">{review.author}</p>
+                    <p className="font-heading text-lg font-semibold">{review.author}</p>
                     <time dateTime={review.date} className="text-xs text-secondary/60">
                       {review.dateLabel}
                     </time>
                   </div>
                 </div>
-                <h3 className="mt-4 font-heading text-lg font-semibold leading-snug max-lg:mt-2 max-lg:text-base">{review.title}</h3>
+                <h3 className="mt-4 font-heading text-xl font-semibold leading-snug max-lg:mt-2 max-lg:text-lg">{review.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-secondary/80 max-lg:mt-1 max-lg:leading-snug">{review.text}</p>
               </article>
             </li>

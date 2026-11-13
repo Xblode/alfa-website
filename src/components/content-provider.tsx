@@ -2,28 +2,24 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { enDictionary } from "@/lib/en-dictionary";
-import { homeContent } from "@/lib/home-content";
-import { homeContentEn } from "@/lib/home-content-en";
-import { localeFromPath, type Locale } from "@/lib/locale";
+import { getDictionary, languages, type Dictionary, type Lang } from "@/content";
+import { localeFromPath } from "@/lib/locale";
 
-export function useLocale(): Locale {
+/** Langue courante. Pour ce lot, elle se déduit encore du chemin (`/en/...` = anglais). */
+export function useLang(): Lang {
   return localeFromPath(usePathname() || "/");
 }
 
-export function useHomeContent() {
-  return useLocale() === "en" ? homeContentEn : homeContent;
-}
-
-export function useTranslate() {
-  const locale = useLocale();
-  return (text: string) => (locale === "en" ? (enDictionary[text] ?? text) : text);
+/** Textes de la langue courante. */
+export function useDictionary(): Dictionary {
+  return getDictionary(useLang());
 }
 
 export function DocumentLang() {
-  const locale = useLocale();
+  const lang = useLang();
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+    const language = languages.find((item) => item.code === lang);
+    if (language) document.documentElement.lang = language.htmlLang;
+  }, [lang]);
   return null;
 }

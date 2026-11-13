@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import {
-  aboutCookies,
-  adsSettings,
-  cookieCategories,
-  reportTabs,
-  type CookieCategory,
-  type CookieCategoryId,
-  type CookieRow,
-  type ReportTabId,
+import { useDictionary } from "@/components/content-provider";
+import type {
+  CookieCategory,
+  CookieCategoryId,
+  CookieRow,
+  CookieTexts,
+  ReportTabId,
 } from "@/lib/cookie-consent";
 
 export function CookieReport() {
+  const { cookies, ui } = useDictionary();
+  const reportTabs: readonly { id: ReportTabId; label: string }[] = cookies.tabs;
+  const cookieCategories: readonly CookieCategory[] = cookies.categories;
   const [tab, setTab] = useState<ReportTabId>("declaration");
   const [categoryId, setCategoryId] = useState<CookieCategoryId>("strict");
   const category =
@@ -23,7 +24,7 @@ export function CookieReport() {
     <div className="mt-2 text-left text-secondary">
       <div
         role="tablist"
-        aria-label="Détails des cookies"
+        aria-label={cookies.report.label}
         data-component="tabs"
         className="grid grid-cols-1 bg-secondary/10 sm:grid-cols-3"
       >
@@ -79,10 +80,10 @@ export function CookieReport() {
           </div>
           <div className="px-2 py-2">
             <p className="text-xs leading-5">{category.summary}</p>
-            {category.cookies.length > 0 ? <CookieTable category={category} /> : null}
+            {category.cookies.length > 0 ? <CookieTable category={category} texts={cookies} /> : null}
           </div>
           <p className="border-t border-secondary/10 px-2 py-1.5 text-right text-[11px] text-secondary/70">
-            Cookie report created by{" "}
+            {cookies.report.createdBy}{" "}
             <a
               href="https://cookie-script.com"
               target="_blank"
@@ -90,7 +91,7 @@ export function CookieReport() {
               className="font-medium text-primary underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               CookieScript
-              <span className="sr-only"> (s’ouvre dans un nouvel onglet)</span>
+              <span className="sr-only"> {ui.common.opensInNewTab}</span>
             </a>
           </p>
         </div>
@@ -103,9 +104,9 @@ export function CookieReport() {
           aria-labelledby="cookie-tab-about"
           className="space-y-2 border border-secondary/10 bg-surface px-3 py-2.5 text-xs leading-5"
         >
-          <p>{aboutCookies.storage}</p>
-          <p>{aboutCookies.definition}</p>
-          <p>{aboutCookies.change}</p>
+          <p>{cookies.about.storage}</p>
+          <p>{cookies.about.definition}</p>
+          <p>{cookies.about.change}</p>
         </div>
       ) : null}
 
@@ -116,14 +117,14 @@ export function CookieReport() {
           aria-labelledby="cookie-tab-ads"
           className="border border-secondary/10 bg-surface px-3 py-2.5 text-xs leading-5"
         >
-          <p>{adsSettings}</p>
+          <p>{cookies.ads}</p>
         </div>
       ) : null}
     </div>
   );
 }
 
-function CookieTable({ category }: { category: CookieCategory }) {
+function CookieTable({ category, texts }: { category: CookieCategory; texts: CookieTexts }) {
   return (
     <>
       <ul className="mt-2 divide-y divide-secondary/10 sm:hidden">
@@ -140,7 +141,7 @@ function CookieTable({ category }: { category: CookieCategory }) {
         data-component="table"
         className="mt-2 hidden w-full table-fixed border-collapse text-left text-xs sm:table"
       >
-        <caption className="sr-only">Cookies {category.label}</caption>
+        <caption className="sr-only">{texts.report.caption.replace("{category}", category.label)}</caption>
         <colgroup>
           <col className="w-[22%]" />
           <col className="w-[22%]" />
@@ -149,10 +150,10 @@ function CookieTable({ category }: { category: CookieCategory }) {
         </colgroup>
         <thead className="bg-secondary/5 text-[11px] uppercase">
           <tr>
-            <th className="px-2 py-1.5 font-semibold">Nom</th>
-            <th className="px-2 py-1.5 font-semibold">Fournisseur</th>
-            <th className="px-2 py-1.5 font-semibold">Expiration</th>
-            <th className="px-2 py-1.5 font-semibold">Description</th>
+            <th className="px-2 py-1.5 font-semibold">{texts.report.tableName}</th>
+            <th className="px-2 py-1.5 font-semibold">{texts.report.tableProvider}</th>
+            <th className="px-2 py-1.5 font-semibold">{texts.report.tableExpires}</th>
+            <th className="px-2 py-1.5 font-semibold">{texts.report.tableDescription}</th>
           </tr>
         </thead>
         <tbody>
@@ -187,6 +188,7 @@ function ProviderLine({ cookie }: { cookie: CookieRow }) {
 }
 
 function ProviderName({ cookie }: { cookie: CookieRow }) {
+  const { ui } = useDictionary();
   if (!cookie.providerHref) return cookie.provider;
   return (
     <a
@@ -196,7 +198,7 @@ function ProviderName({ cookie }: { cookie: CookieRow }) {
       className="font-medium text-primary underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       {cookie.provider}
-      <span className="sr-only"> (s’ouvre dans un nouvel onglet)</span>
+      <span className="sr-only"> {ui.common.opensInNewTab}</span>
     </a>
   );
 }

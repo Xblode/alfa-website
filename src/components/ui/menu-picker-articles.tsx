@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { useHomeContent } from "@/components/content-provider";
+import type { Dictionary } from "@/content";
+import { useDictionary } from "@/components/content-provider";
 
 const focusRing =
   "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
@@ -14,7 +15,8 @@ export function ArticleMenu({
   labelledBy: string;
   onChoose: () => void;
 }) {
-  const articles = useHomeContent().articles.items;
+  const { articles: articlesContent, ui } = useDictionary();
+  const articles = articlesContent.items;
   const categories = articles.reduce<string[]>((list, article) => {
     if (!list.includes(article.category)) list.push(article.category);
     return list;
@@ -29,9 +31,9 @@ export function ArticleMenu({
       className="grid gap-4 sm:grid-cols-[13rem_1fr]"
       onMouseLeave={() => setCategory(null)}
     >
-      <div role="group" aria-label="Catégories d'articles">
+      <div role="group" aria-label={ui.articleMenu.categoriesLabel}>
         <p className="px-1 pb-2 text-xs font-bold tracking-wide text-secondary/60 uppercase">
-          Catégories
+          {ui.articleMenu.categories}
         </p>
         <ul className="grid list-none gap-1 p-0">
           {categories.map((item) => {
@@ -61,7 +63,7 @@ export function ArticleMenu({
       </div>
       <div>
         <p className="px-1 pb-2 text-xs font-bold tracking-wide text-secondary/60 uppercase">
-          {category ?? "Derniers articles"}
+          {category ?? ui.articleMenu.latest}
         </p>
         <ul aria-labelledby={labelledBy} className="grid list-none gap-2 p-0 sm:grid-cols-2">
           {proposed.map((article) => (
@@ -79,7 +81,7 @@ function ArticleLink({
   article,
   onChoose,
 }: {
-  article: ReturnType<typeof useHomeContent>["articles"]["items"][number];
+  article: Dictionary["articles"]["items"][number];
   onChoose: () => void;
 }) {
   return (
