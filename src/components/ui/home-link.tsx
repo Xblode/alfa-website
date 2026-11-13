@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
+import { useDictionary } from "@/components/content-provider";
 import { localeFromPath } from "@/lib/locale";
 
 export function HomeLink({
@@ -13,8 +14,9 @@ export function HomeLink({
   children: ReactNode;
 }) {
   const pathname = usePathname() || "/";
+  const { ui } = useDictionary();
   const home = localeFromPath(pathname) === "en" ? "/en" : "/";
-  const label = home === "/en" ? "Alfa, home" : "Alfa, accueil";
+  const label = ui.header.homeLink;
 
   return (
     <Link

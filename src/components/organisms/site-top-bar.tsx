@@ -1,6 +1,6 @@
 "use client";
 
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 
 function emphasize(text: string, emphasis: string) {
   const start = emphasis ? text.indexOf(emphasis) : -1;
@@ -39,15 +39,15 @@ function TopBarLine({
 }
 
 export function SiteTopBar() {
-  const homeContent = useHomeContent();
-  const messages = homeContent.topBar.messages;
+  const { topBar, seat, ui } = useDictionary();
+  const messages = topBar.messages;
   const track = [...messages, ...messages];
 
   return (
     <div className="bg-primary text-sm text-secondary" data-marquee="idle">
       <div className="mx-auto max-w-7xl overflow-hidden px-4 py-2 motion-safe:[mask-image:linear-gradient(to_right,transparent,black_1.5rem,black_calc(100%-1.5rem),transparent)]">
         <ul
-          aria-label="Informations"
+          aria-label={ui.header.topBar}
           data-marquee-track=""
           className="flex max-w-full list-none flex-wrap gap-x-6 gap-y-1 p-0 motion-safe:w-max motion-safe:max-w-none motion-safe:flex-nowrap motion-safe:gap-0 motion-safe:animate-top-bar-marquee motion-safe:hover:[animation-play-state:paused] motion-safe:focus-within:[animation-play-state:paused] max-lg:items-center"
         >
@@ -65,7 +65,7 @@ export function SiteTopBar() {
                 <TopBarLine
                   text={message.text}
                   emphasis={message.emphasis}
-                  href={message.id === "telephone" ? homeContent.seat.phoneHref : undefined}
+                  href={message.id === "telephone" ? seat.phoneHref : undefined}
                 />
               </li>
             );

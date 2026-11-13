@@ -1,7 +1,7 @@
 "use client";
 
 import type { FormEvent, MouseEvent } from "react";
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 
 const fieldClassName =
   "min-h-11 w-full border border-secondary/25 bg-surface px-3 py-2 text-base text-secondary outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
@@ -10,9 +10,9 @@ const linkClassName =
   "text-xl font-bold text-secondary underline decoration-primary decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary";
 
 const fields = [
-  { id: "home-contact-name", name: "name", label: "Nom", type: "text", autoComplete: "name" },
-  { id: "home-contact-email", name: "email", label: "E-mail", type: "email", autoComplete: "email", inputMode: "email" },
-  { id: "home-contact-phone", name: "phone", label: "Téléphone", type: "tel", autoComplete: "tel", inputMode: "tel" },
+  { id: "home-contact-name", name: "name", label: "name", type: "text", autoComplete: "name" },
+  { id: "home-contact-email", name: "email", label: "email", type: "email", autoComplete: "email", inputMode: "email" },
+  { id: "home-contact-phone", name: "phone", label: "phone", type: "tel", autoComplete: "tel", inputMode: "tel" },
 ] as const;
 
 function readOptionalString(source: object, key: string) {
@@ -30,8 +30,9 @@ function blockEvent(
 }
 
 export function HomeContact() {
-  const homeContent = useHomeContent();
-  const { seat } = homeContent;
+  const homeContent = useDictionary();
+  const { seat, ui } = homeContent;
+  const fieldLabels = { name: ui.contact.name, email: ui.common.emailField, phone: ui.common.phone };
   const email =
     readOptionalString(homeContent, "email") ?? readOptionalString(seat, "email");
   const emailHref = email
@@ -48,8 +49,8 @@ export function HomeContact() {
     >
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
         <div className="grid content-start gap-6">
-          <h2 id="home-contact-title" className="text-3xl font-semibold tracking-tight">
-            Nous contacter
+          <h2 id="home-contact-title" className="text-section font-semibold tracking-tight">
+            {ui.common.contactUs}
           </h2>
           <dl className="grid gap-5">
             <div className="grid gap-1">
@@ -59,7 +60,7 @@ export function HomeContact() {
               </dd>
             </div>
             <div className="grid gap-1">
-              <dt className="text-sm font-semibold">Téléphone</dt>
+              <dt className="text-sm font-semibold">{ui.common.phone}</dt>
               <dd>
                 <a href={seat.phoneHref} className={linkClassName}>
                   {seat.phoneDisplay}
@@ -67,12 +68,12 @@ export function HomeContact() {
               </dd>
             </div>
             <div className="grid gap-1">
-              <dt className="text-sm font-semibold">Horaires</dt>
+              <dt className="text-sm font-semibold">{ui.contact.hours}</dt>
               <dd>{seat.hours}</dd>
             </div>
             {email && emailHref ? (
               <div className="grid gap-1">
-                <dt className="text-sm font-semibold">E-mail</dt>
+                <dt className="text-sm font-semibold">{ui.common.emailField}</dt>
                 <dd>
                   <a href={emailHref} className={linkClassName}>
                     {email.replace(/^mailto:/, "")}
@@ -90,12 +91,12 @@ export function HomeContact() {
           onSubmit={blockEvent}
           noValidate
         >
-          <h3 id="home-contact-form-title" className="text-xl font-semibold">
-            Écrire au siège
+          <h3 id="home-contact-form-title" className="text-[1.375rem] font-semibold">
+            {ui.contact.writeToSeat}
           </h3>
           {fields.map((field) => (
             <label key={field.id} className="grid gap-1 text-sm font-medium" htmlFor={field.id}>
-              <span>{field.label}</span>
+              <span>{fieldLabels[field.label]}</span>
               <input
                 id={field.id}
                 name={field.name}
@@ -107,7 +108,7 @@ export function HomeContact() {
             </label>
           ))}
           <label className="grid gap-1 text-sm font-medium" htmlFor="home-contact-message">
-            <span>Message</span>
+            <span>{ui.contact.message}</span>
             <textarea
               id="home-contact-message"
               name="message"
@@ -120,7 +121,7 @@ export function HomeContact() {
             onClick={blockEvent}
             className="inline-flex min-h-11 w-fit items-center justify-center bg-primary px-5 py-2.5 text-base font-semibold text-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
           >
-            Envoyer
+            {ui.contact.send}
           </button>
         </form>
       </div>

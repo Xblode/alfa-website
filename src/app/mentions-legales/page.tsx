@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/organisms/legal-page";
 import { SiteFrame } from "@/components/organisms/site-frame";
-import { mentionsLegales } from "@/lib/legal-pages";
+import { getDictionary } from "@/content";
+
+const { mentionsLegales } = getDictionary("fr").legalPages;
 
 export const metadata: Metadata = {
   title: `${mentionsLegales.title} | Alfa`,
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 export default function MentionsLegalesPage() {
   return (
     <SiteFrame>
-      <LegalPage page={mentionsLegales} />
+      <LegalPage id="mentionsLegales" />
     </SiteFrame>
   );
 }

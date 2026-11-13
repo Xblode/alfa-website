@@ -1,44 +1,50 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslate } from "@/components/content-provider";
-import { homeContent } from "@/lib/home-content";
+import { useId } from "react";
+import { useDictionary, useLang } from "@/components/content-provider";
+import type { Dictionary } from "@/content";
+import { localizePath } from "@/lib/locale";
 
-type Space = (typeof homeContent.spaces.items)[number];
+type Space = Dictionary["spaces"]["items"][number];
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 export function SpaceCard({ space }: { space: Space }) {
-  const t = useTranslate();
+  const { ui, spaces } = useDictionary();
+  const lang = useLang();
+  const titleId = useId();
+  const badgeId = useId();
   const isAvailable = space.availability.kind === "available";
-  const availabilityLabel = isAvailable ? t("Disponible") : space.availability.label;
+  const availabilityLabel = isAvailable ? ui.common.available : space.availability.label;
+  const price = space.priceFrom;
 
   return (
     <a
-      href={space.href}
+      href={localizePath(spaces.cardHref, lang)}
       data-component="card"
-      className={`group relative block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-secondary text-surface shadow-lg shadow-secondary/20 transition-[translate,box-shadow] duration-200 hover:-translate-y-1 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing}`}
+      aria-labelledby={`${titleId} ${badgeId}`}
+      className={`group block h-full overflow-hidden rounded-2xl bg-white text-left transition-shadow duration-200 hover:shadow-xl hover:shadow-secondary/20 motion-reduce:transition-none ${focusRing}`}
     >
-      {space.image ? (
-        <Image
-          src={space.image}
-          alt=""
-          fill
-          sizes="(min-width: 768px) 25vw, 100vw"
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      <div className="relative h-32 w-full bg-secondary/10 sm:h-36 xl:h-40">
+        {space.image ? (
+          <Image
+            src={space.image}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : null}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-secondary/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100 motion-reduce:transition-none"
         />
-      ) : null}
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-secondary via-secondary/20 to-secondary/30"
-      />
-
-      <div className="relative flex h-full flex-col justify-between p-4">
         <span
-          className={`inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-xs leading-tight font-semibold ${
-            isAvailable ? "bg-primary text-secondary" : "bg-surface text-secondary"
+          id={badgeId}
+          className={`absolute top-3 left-3 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1.5 text-xs leading-tight font-semibold ${
+            isAvailable ? "bg-primary text-secondary" : "bg-white text-secondary"
           }`}
         >
           <span
@@ -47,23 +53,32 @@ export function SpaceCard({ space }: { space: Space }) {
           />
           {availabilityLabel}
         </span>
+      </div>
 
-        <div className="flex items-end justify-between gap-3 text-left">
-          <div className="min-w-0">
-            <p className="text-xs font-semibold tracking-wide text-primary-100 uppercase">
-              {space.city} · {space.floor}
-            </p>
-            <h3 className="mt-1 text-xl leading-snug font-semibold text-surface">
-              {space.cardTitle}
-            </h3>
-          </div>
-          <span
-            aria-hidden="true"
-            className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-surface text-secondary transition-colors group-hover:bg-primary"
-          >
-            →
-          </span>
-        </div>
+      <div className="p-5">
+        <p className="text-xs font-semibold tracking-wide text-secondary/70 uppercase">
+          {spaces.location} · {space.floor}
+        </p>
+        <h3 id={titleId} className="mt-1 text-lg leading-snug font-medium text-secondary">
+          {space.cardTitle}
+        </h3>
+        <p className="mt-2 text-sm text-secondary/80">
+          {price === null ? (
+            spaces.priceOnRequest
+          ) : (
+            <>
+              {spaces.priceFromLabel}{" "}
+              <strong className="font-semibold text-secondary">
+                {price} {spaces.priceUnit}
+              </strong>
+            </>
+          )}
+        </p>
+        <address className="mt-3 text-xs leading-relaxed text-secondary/70 not-italic">
+          {spaces.address.street}
+          <br />
+          {spaces.address.postalCity}
+        </address>
       </div>
     </a>
   );

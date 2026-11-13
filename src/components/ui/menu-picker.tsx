@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, type PointerEvent as ReactPointerEvent } from "react";
 import { ArticleMenu } from "./menu-picker-articles";
 import { ServiceMenu } from "./menu-picker-services";
 
@@ -27,13 +27,15 @@ const focusRing =
   "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 const panelClass =
-  "z-40 mx-auto mt-1 w-[min(48rem,calc(100vw-2rem))] rounded-2xl border border-secondary/10 bg-surface p-4 shadow-lg xl:absolute xl:top-full xl:left-1/2 xl:z-40 xl:mt-3 xl:-translate-x-1/2 max-lg:w-full max-lg:max-w-full";
+  "z-40 mx-auto mt-1 w-[min(58rem,calc(100vw-2rem))] rounded-2xl border border-secondary/10 bg-surface p-4 shadow-lg xl:absolute xl:top-full xl:left-1/2 xl:z-40 xl:mt-3 xl:-translate-x-1/2 max-lg:w-full max-lg:max-w-full";
 
 export function MenuPicker(props: MenuPickerProps) {
   const { label, open, onOpenChange, onNavigate } = props;
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const onOpenChangeRef = useRef(onOpenChange);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openedByHover = useRef(false);
   const baseId = useId();
   const buttonId = `${baseId}-button`;
   const panelId = `${baseId}-panel`;
@@ -67,21 +69,62 @@ export function MenuPicker(props: MenuPickerProps) {
     };
   }, [open]);
 
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
+
+  useEffect(() => {
+    if (!open) openedByHover.current = false;
+  }, [open]);
+
+  // Survol : souris sur grand écran uniquement (le tactile et le clavier gardent le clic).
+  const canHover = (event: ReactPointerEvent) =>
+    event.pointerType === "mouse" && window.matchMedia("(min-width: 80rem) and (hover: hover)").matches;
+
+  const onPointerEnter = (event: ReactPointerEvent) => {
+    if (!canHover(event)) return;
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (!open) {
+      openedByHover.current = true;
+      onOpenChange(true);
+    }
+  };
+
+  const onPointerLeave = (event: ReactPointerEvent) => {
+    if (!canHover(event)) return;
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => onOpenChangeRef.current(false), 150);
+  };
+
+  const onTriggerClick = () => {
+    if (openedByHover.current) {
+      openedByHover.current = false;
+      return;
+    }
+    onOpenChange(!open);
+  };
+
   const choose = () => {
     onOpenChange(false);
     onNavigate?.();
   };
 
   return (
-    <div ref={rootRef} data-menu-picker={props.layout} className="relative w-full xl:static xl:w-auto">
+    <div
+      ref={rootRef}
+      data-menu-picker={props.layout}
+      className="relative w-full xl:static xl:w-auto"
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+    >
       <button
         ref={buttonRef}
         id={buttonId}
         type="button"
-        className={`inline-flex min-h-11 w-full items-center justify-between gap-2 px-1 py-2 text-left text-sm font-bold whitespace-nowrap hover:text-primary xl:w-auto xl:justify-start ${focusRing}`}
+        className={`inline-flex min-h-11 w-full items-center justify-between gap-2 px-1 py-2 text-left text-sm font-semibold whitespace-nowrap hover:text-primary xl:w-auto xl:justify-start ${focusRing}`}
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={() => onOpenChange(!open)}
+        onClick={onTriggerClick}
       >
         <span>{label}</span>
         <Chevron open={open} />

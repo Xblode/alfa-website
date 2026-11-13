@@ -1,10 +1,10 @@
 "use client";
 
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 import { FaqSection } from "@/components/organisms/faq-section";
 
 export function HomeFaq() {
-  const { faq } = useHomeContent();
+  const { faq } = useDictionary();
   return (
     <FaqSection
       titleId="home-faq-title"

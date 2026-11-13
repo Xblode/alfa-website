@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { openContactEventName } from "@/lib/open-contact-event";
+import { createOpenContactEvent } from "@/lib/open-contact-event";
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
@@ -9,9 +9,12 @@ const focusRing =
 export function OpenContactButton({
   children,
   className,
+  message,
 }: {
   children: ReactNode;
   className: string;
+  /** Texte pré-rempli dans le champ message du popup. */
+  message?: string;
 }) {
   return (
     <button
@@ -19,7 +22,7 @@ export function OpenContactButton({
       data-component="button-primary"
       className={`${focusRing} ${className}`}
       onClick={() => {
-        window.dispatchEvent(new Event(openContactEventName));
+        window.dispatchEvent(createOpenContactEvent(message));
       }}
     >
       {children}

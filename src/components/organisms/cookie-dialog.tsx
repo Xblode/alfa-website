@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import { useHomeContent } from "@/components/content-provider";
-import {
-  cookieCategories,
-  cookieIntro,
-  type CookieConsentState,
-  type OptionalCategoryId,
+import { useDictionary } from "@/components/content-provider";
+import type {
+  CookieCategory,
+  CookieConsentState,
+  OptionalCategoryId,
 } from "@/lib/cookie-consent";
 import { CookieReport } from "@/components/organisms/cookie-report";
 
@@ -41,11 +40,9 @@ export function CookieDialog({
   useEffect(() => {
     onCloseRef.current = onClose;
   }, [onClose]);
-  const homeContent = useHomeContent();
-  const privacy = homeContent.legal.find((item) => {
-    const label = item.label.toLowerCase();
-    return label.includes("confidential") || label.includes("privacy");
-  });
+  const { legal, cookies } = useDictionary();
+  const cookieCategories: readonly CookieCategory[] = cookies.categories;
+  const privacy = legal.find((item) => item.href === "/politique-de-confidentialite");
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -100,12 +97,12 @@ export function CookieDialog({
         <div className="grid grid-cols-[2rem_1fr_2rem] items-start gap-2">
           <span aria-hidden="true" />
           <h2 id={titleId} className="text-lg font-semibold tracking-tight">
-            {cookieIntro.title}
+            {cookies.intro.title}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Fermer"
+            aria-label={cookies.dialog.close}
             data-component="button"
             className="inline-flex size-8 items-center justify-center justify-self-end rounded-lg text-2xl leading-none text-secondary hover:bg-secondary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
@@ -113,26 +110,26 @@ export function CookieDialog({
           </button>
         </div>
         <p className="mx-auto mt-2 max-w-xl text-[13px] leading-5">
-          {cookieIntro.body}{" "}
+          {cookies.intro.body}{" "}
           <a
             href={privacy?.href ?? "#"}
             className="font-medium text-primary underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            {cookieIntro.privacyLabel}
+            {cookies.intro.privacyLabel}
           </a>
         </p>
         <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
           {details ? (
             <ActionButton variant="primary" onClick={onSave}>
-              Sauvegarder et fermer
+              {cookies.dialog.saveAndClose}
             </ActionButton>
           ) : null}
           <ActionButton variant="outline" onClick={onRejectAll}>
-            Refuser tout
+            {cookies.dialog.rejectAll}
           </ActionButton>
           {details ? null : (
             <ActionButton variant="primary" onClick={onAcceptAll}>
-              Accepter et fermer
+              {cookies.dialog.acceptAndClose}
             </ActionButton>
           )}
         </div>
@@ -144,12 +141,12 @@ export function CookieDialog({
           className="mt-2 inline-flex min-h-8 items-center gap-1.5 rounded-lg px-2 text-[11px] font-semibold uppercase tracking-wide text-secondary hover:bg-secondary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           <GearIcon />
-          {details ? "Masquer les détails" : "Afficher les détails"}
+          {details ? cookies.dialog.hideDetails : cookies.dialog.showDetails}
         </button>
         {details ? (
           <>
             <fieldset className="mx-auto mt-2 grid w-full grid-cols-2 gap-x-3 gap-y-1 border-0 p-0 text-left sm:grid-cols-3 lg:grid-cols-5">
-              <legend className="sr-only">Catégories de cookies</legend>
+              <legend className="sr-only">{cookies.dialog.categoriesLegend}</legend>
               {cookieCategories.map((category) => {
                 const checked = category.locked
                   ? true

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useState, type CSSProperties } from "react";
+import { useDictionary } from "@/components/content-provider";
 
 type CookieBadgeProps = {
   onOpen: () => void;
@@ -17,6 +18,7 @@ function readFooterClearance() {
 }
 
 export function CookieBadge({ onOpen }: CookieBadgeProps) {
+  const { cookies } = useDictionary();
   const [clearance, setClearance] = useState(0);
 
   useLayoutEffect(() => {
@@ -54,7 +56,7 @@ export function CookieBadge({ onOpen }: CookieBadgeProps) {
     >
       <CookieMark />
       <span className="max-w-0 overflow-hidden whitespace-nowrap pr-0 text-base font-semibold uppercase leading-10 transition-[max-width,padding] duration-500 group-hover:max-w-[300px] group-hover:px-3 group-focus-visible:max-w-[300px] group-focus-visible:px-3 motion-reduce:transition-none max-[440px]:sr-only">
-        Paramétrage des cookies
+        {cookies.badge}
       </span>
     </button>
   );

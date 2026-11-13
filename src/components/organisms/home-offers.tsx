@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { useHomeContent, useTranslate } from "@/components/content-provider";
-import { homeContent } from "@/lib/home-content";
+import { useDictionary } from "@/components/content-provider";
+import type { Dictionary } from "@/content";
 
 const offerOrder = [
   "domiciliation-commerciale",
@@ -11,7 +11,7 @@ const offerOrder = [
   "location-ponctuelle",
 ] as const;
 
-function comparedFrom(offers: typeof homeContent.offers) {
+function comparedFrom(offers: Dictionary["offers"]) {
   return offerOrder.flatMap((id) => {
     const offer = offers.items.find((item) => item.id === id);
     return offer ? [offer] : [];
@@ -20,14 +20,13 @@ function comparedFrom(offers: typeof homeContent.offers) {
 
 type ComparedOffer = ReturnType<typeof comparedFrom>[number];
 type OfferId = ComparedOffer["id"] | "sur-mesure";
-type OfferExample = (typeof homeContent.offers.items)[number]["examples"][number];
+type OfferExample = Dictionary["offers"]["items"][number]["examples"][number];
 
 const focusRing =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 export function HomeOffers() {
-  const t = useTranslate();
-  const { offers, seat } = useHomeContent();
+  const { offers, seat, ui } = useDictionary();
   const customOffer = offers.items.find((item) => item.id === "sur-mesure");
   const comparedOffers = comparedFrom(offers);
   const [selectedId, setSelectedId] = useState<ComparedOffer["id"]>("location-ponctuelle");
@@ -85,7 +84,7 @@ export function HomeOffers() {
           <span className="h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
           <h2
             id="home-offers-title"
-            className="text-3xl font-semibold tracking-tight text-secondary sm:text-4xl"
+            className="text-section font-semibold tracking-tight text-secondary"
           >
             {offers.title}
           </h2>
@@ -94,7 +93,7 @@ export function HomeOffers() {
         <div className="overflow-hidden rounded-2xl border border-secondary/12 bg-surface text-secondary shadow-xs">
           <div
             role="tablist"
-            aria-label="Offres Alfa"
+            aria-label={ui.offers.tabsLabel}
             data-component="tabs"
             aria-orientation="horizontal"
             ref={tabListRef}
@@ -128,7 +127,7 @@ export function HomeOffers() {
                   {selected.subtitle}
                 </p>
               ) : null}
-              <h3 className="text-2xl font-semibold tracking-tight">{selected.title}</h3>
+              <h3 className="text-[1.625rem] font-semibold tracking-tight">{selected.title}</h3>
               {selected.price ? (
                 <p className="inline-flex w-fit items-center rounded-lg bg-primary/15 px-3 py-1.5 text-sm font-bold text-secondary">
                   {selected.price.label}
@@ -164,7 +163,7 @@ export function HomeOffers() {
               <div className="flex max-w-2xl items-start gap-4">
                 <OfferIcon id="sur-mesure" className="bg-primary text-secondary" />
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl font-semibold text-surface sm:text-2xl">
+                  <h3 className="text-2xl font-semibold text-surface sm:text-3xl">
                     {customOffer.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-surface/85 sm:text-base">
@@ -178,7 +177,7 @@ export function HomeOffers() {
                 className={`inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-secondary focus-visible:outline-offset-2 focus-visible:outline-primary-100 ${focusRing}`}
               >
                 <PhoneIcon />
-                <span>{t("Appeler")}</span>
+                <span>{ui.common.call}</span>
               </a>
             </div>
             <OfferExamples id="sur-mesure" examples={customOffer.examples} tone="dark" />
@@ -198,7 +197,7 @@ function OfferExamples({
   examples: readonly OfferExample[];
   tone: "light" | "dark";
 }) {
-  const t = useTranslate();
+  const { ui } = useDictionary();
   const labelId = `offer-examples-${id}`;
   const light = tone === "light";
 
@@ -208,7 +207,7 @@ function OfferExamples({
         id={labelId}
         className={`text-xs font-semibold tracking-wide uppercase ${light ? "text-primary" : "text-primary-100"}`}
       >
-        {t("Pour vous, par exemple")}
+        {ui.offers.examplesLabel}
       </p>
       <ul aria-labelledby={labelId} className="grid gap-2 sm:grid-cols-3 max-lg:gap-1.5">
         {examples.map((example) => (
@@ -266,7 +265,7 @@ function OfferTab({
         id={offer.id}
         className={selected ? "bg-primary text-secondary" : "bg-primary/12 text-primary"}
       />
-      <span className="text-base font-semibold leading-snug">{offer.title}</span>
+      <span className="text-lg font-semibold leading-snug">{offer.title}</span>
       {offer.price ? (
         <span className="text-xs font-bold text-secondary/80">{offer.price.label}</span>
       ) : null}

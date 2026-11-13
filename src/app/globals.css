@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../../.claude/skills/site-mods/code";
 
 @theme {
   --color-primary: #00a696;
@@ -6,6 +7,16 @@
   --color-secondary: #282828;
   --color-surface: #ffffff;
   --color-hero: #eaf1f0;
+
+  /* Tailles de texte : text-sm passe à 16 px (texte courant, menu, boutons). */
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
+  /* H1 des hero : 36 px mobile, ~45 px tablette, 62 px desktop. */
+  --text-display: clamp(2.25rem, 1.1rem + 3.6vw, 3.875rem);
+  --text-display--line-height: 1.15;
+  /* H2 de section : 28 px mobile, ~37 px tablette, 42 px desktop. */
+  --text-section: clamp(1.75rem, 1.2rem + 2.3vw, 2.625rem);
+  --text-section--line-height: 1.15;
   --animate-top-bar-marquee: top-bar-marquee 40s linear infinite;
 
   --animate-service-in: service-in 350ms ease-out both;

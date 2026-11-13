@@ -3,6 +3,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import { useDictionary } from "@/components/content-provider";
+import { languages } from "@/content";
 import { localizePath, localeFromPath, type Locale } from "@/lib/locale";
 
 const focusRing =
@@ -11,15 +13,22 @@ const focusRing =
 export function LanguageSwitch() {
   const pathname = usePathname() || "/";
   const locale = localeFromPath(pathname);
+  const { ui } = useDictionary();
 
   return (
-    <div role="group" aria-label="Langue" data-name="Langue" className="ml-1 flex items-center">
-      <LanguageLink locale="fr" current={locale} pathname={pathname} label="Français">
-        <FrenchFlag />
-      </LanguageLink>
-      <LanguageLink locale="en" current={locale} pathname={pathname} label="English">
-        <EnglishFlag />
-      </LanguageLink>
+    <div role="group" aria-label={ui.header.languageGroup} data-name="Langue" className="ml-1 flex items-center">
+      {languages.map((language) => (
+        <LanguageLink
+          key={language.code}
+          locale={language.code}
+          current={locale}
+          pathname={pathname}
+          label={language.label}
+          hrefLang={language.htmlLang}
+        >
+          {flags[language.code]}
+        </LanguageLink>
+      ))}
     </div>
   );
 }
@@ -29,12 +38,14 @@ function LanguageLink({
   current,
   pathname,
   label,
+  hrefLang,
   children,
 }: {
   locale: Locale;
   current: Locale;
   pathname: string;
   label: string;
+  hrefLang: string;
   children: ReactNode;
 }) {
   const active = locale === current;
@@ -42,16 +53,21 @@ function LanguageLink({
   return (
     <Link
       href={localizePath(pathname, locale)}
-      hrefLang={locale}
+      hrefLang={hrefLang}
       aria-current={active ? "page" : undefined}
       aria-label={label}
       data-component="button"
-      className={`inline-flex size-11 items-center justify-center rounded-md ${active ? "ring-2 ring-primary" : ""} ${focusRing}`}
+      className={`inline-flex size-11 items-center justify-center rounded-md ${active ? "opacity-100" : "opacity-60 hover:opacity-100"} ${focusRing}`}
     >
       {children}
     </Link>
   );
 }
+
+const flags: Record<Locale, ReactNode> = {
+  fr: <FrenchFlag />,
+  en: <EnglishFlag />,
+};
 
 function FlagFrame({ children }: { children: ReactNode }) {
   return (

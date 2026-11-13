@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslate } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 import { OpenContactButton } from "@/components/organisms/open-contact-button";
 import { ServiceFactList } from "@/components/organisms/service-fact-list";
 import type { ServiceBlockContent, ServiceLink } from "@/lib/service-pages";
@@ -13,13 +13,10 @@ const focusRing =
 const contactClassName =
   "inline-flex min-h-11 w-fit items-center justify-center rounded-full bg-primary px-5 py-2.5 text-center font-heading text-sm font-semibold text-secondary transition-colors hover:bg-primary-100";
 
-const headingIds: Record<string, string> = {
-  "Qu'est-ce que": "service-what",
-  "Pourquoi choisir": "service-why",
-  "Solutions Alfa": "service-solutions",
-  "What it is": "service-what",
-  "Why choose it": "service-why",
-  "Alfa solutions": "service-solutions",
+const headingIds: Record<ServiceBlockContent["id"], string> = {
+  what: "service-what",
+  why: "service-why",
+  solutions: "service-solutions",
 };
 
 export function ServiceBlock({
@@ -31,8 +28,7 @@ export function ServiceBlock({
   imageFirst: boolean;
   links?: readonly ServiceLink[];
 }) {
-  const t = useTranslate();
-  const headingId = headingIds[block.section];
+  const headingId = headingIds[block.id];
 
   return (
     <section
@@ -61,7 +57,7 @@ export function ServiceBlock({
 
         <div className={imageFirst ? "" : "lg:order-1"}>
           <span className="mb-3 block h-1 w-12 rounded-full bg-primary" aria-hidden="true" />
-          <h2 id={headingId} className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h2 id={headingId} className="font-heading text-section font-semibold tracking-tight">
             {block.section}
           </h2>
           {block.paragraphs.length > 0 ? (
@@ -92,9 +88,9 @@ export function ServiceBlock({
 }
 
 function ServiceLinks({ links }: { links: readonly ServiceLink[] }) {
-  const t = useTranslate();
+  const { ui } = useDictionary();
   return (
-    <nav aria-label="Autres services" data-component="nav" data-name="Autres services" className="mt-8 grid gap-3">
+    <nav aria-label={ui.servicePage.otherServices} data-component="nav" data-name="Autres services" className="mt-8 grid gap-3">
       <ul className="grid gap-2">
         {links.map((link) => (
           <li key={link.href}>
@@ -108,7 +104,7 @@ function ServiceLinks({ links }: { links: readonly ServiceLink[] }) {
           </li>
         ))}
       </ul>
-      <OpenContactButton className={contactClassName}>{t("Contactez-nous")}</OpenContactButton>
+      <OpenContactButton className={contactClassName}>{ui.servicePage.contactUs}</OpenContactButton>
     </nav>
   );
 }

@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useLocale } from "@/components/content-provider";
+import { useDictionary, useLang } from "@/components/content-provider";
 import type { ServicePageContent } from "@/lib/service-pages";
 
 const focusRing =
   "rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary";
 
 export function ServiceHero({ page }: { page: ServicePageContent }) {
-  const home = useLocale() === "en" ? "/en" : "/";
-  const homeLabel = home === "/en" ? "Home" : "Accueil";
+  const home = useLang() === "en" ? "/en" : "/";
+  const { ui } = useDictionary();
   return (
     <section data-section="Hero service" aria-labelledby="service-hero-title" className="bg-hero text-secondary">
       <div
@@ -28,11 +28,11 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-        <nav aria-label="Fil d'Ariane" data-component="nav" data-name="Fil d'Ariane">
+        <nav aria-label={ui.breadcrumb.label} data-component="nav" data-name="Fil d'Ariane">
           <ol className="flex flex-wrap items-center gap-2 text-sm">
             <li>
               <Link href={home} className={`font-semibold underline-offset-4 hover:underline ${focusRing}`}>
-                {homeLabel}
+                {ui.breadcrumb.home}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
@@ -41,11 +41,11 @@ export function ServiceHero({ page }: { page: ServicePageContent }) {
         </nav>
         <h1
           id="service-hero-title"
-          className="mt-4 font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl lg:text-5xl"
+          className="mt-4 font-heading text-display leading-tight font-semibold text-balance"
         >
           {page.title}
         </h1>
-        <div className="mt-4 grid max-w-3xl gap-3 text-base leading-relaxed text-secondary/80">
+        <div className="mt-4 grid max-w-3xl gap-3 text-base leading-relaxed text-secondary/80 lg:text-lg">
           {page.description.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

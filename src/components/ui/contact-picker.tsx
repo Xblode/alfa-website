@@ -2,18 +2,11 @@
 
 import { useEffect, useId, useLayoutEffect, useRef } from "react";
 import type { FormEvent } from "react";
-import { useHomeContent } from "@/components/content-provider";
+import { useDictionary } from "@/components/content-provider";
 import { googleMapsHref } from "@/lib/google-maps";
 
 const fieldClassName =
   "min-h-11 w-full rounded-lg border border-secondary/20 bg-surface px-3 py-2 text-base text-secondary outline-none transition-colors focus:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none";
-
-const interestOptions = [
-  { value: "domiciliation-commerciale", label: "Domiciliation commerciale" },
-  { value: "permanence-telephonique", label: "Permanence téléphonique" },
-  { value: "bureaux-individuels", label: "Bureaux individuels" },
-  { value: "bureaux-communs-reunion", label: "Bureaux communs & réunion" },
-] as const;
 
 const panelClassName =
   "pointer-events-auto absolute right-0 bottom-full z-40 mb-3 w-[min(56rem,100%)] max-h-[min(40rem,calc(100dvh-7rem))] overflow-y-auto overscroll-contain rounded-2xl border border-secondary/10 bg-surface p-4 text-secondary shadow-lg sm:p-5";
@@ -23,6 +16,8 @@ type ContactPickerProps = {
   onOpenChange: (open: boolean) => void;
   atBottom: boolean;
   tease: boolean;
+  /** Texte placé dans le champ message à l'ouverture (vide par défaut). */
+  initialMessage?: string;
   onScrollTop: () => void;
 };
 
@@ -31,6 +26,7 @@ export function ContactPicker({
   onOpenChange,
   atBottom,
   tease,
+  initialMessage = "",
   onScrollTop,
 }: ContactPickerProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -41,7 +37,7 @@ export function ContactPicker({
   const baseId = useId();
   const panelId = `${baseId}-panel`;
   const titleId = `${baseId}-title`;
-  const { seat } = useHomeContent();
+  const { ui } = useDictionary();
 
   useEffect(() => {
     onOpenChangeRef.current = onOpenChange;
@@ -95,7 +91,7 @@ export function ContactPicker({
         className={`pointer-events-auto inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-primary text-secondary shadow-lg transition-[padding,transform] duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary motion-reduce:transition-none ${
           tease && !atBottom ? "gap-2 px-5" : "w-14"
         }`}
-        aria-label={atBottom ? "Haut de page" : "Contacter Alfa"}
+        aria-label={atBottom ? ui.contact.scrollTop : ui.contact.title}
         {...(atBottom
           ? {}
           : {
@@ -117,7 +113,7 @@ export function ContactPicker({
                 tease ? "max-w-24 opacity-100" : "max-w-0 opacity-0"
               }`}
             >
-              Contact
+              {ui.contact.teaser}
             </span>
           </>
         )}
@@ -130,7 +126,7 @@ export function ContactPicker({
         className={panelClassName}
       >
         {open ? (
-          <ContactPanel titleId={titleId} baseId={baseId} onClose={() => onOpenChange(false)} />
+          <ContactPanel key={initialMessage} titleId={titleId} baseId={baseId} initialMessage={initialMessage} onClose={() => onOpenChange(false)} />
         ) : null}
       </div>
     </div>
@@ -140,13 +136,15 @@ export function ContactPicker({
 function ContactPanel({
   titleId,
   baseId,
+  initialMessage,
   onClose,
 }: {
   titleId: string;
   baseId: string;
+  initialMessage: string;
   onClose: () => void;
 }) {
-  const { seat } = useHomeContent();
+  const { seat, ui } = useDictionary();
   const nameId = `${baseId}-name`;
   const emailId = `${baseId}-email`;
   const phoneId = `${baseId}-phone`;
@@ -161,7 +159,7 @@ function ContactPanel({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h2 id={titleId} className="font-heading text-xl font-semibold tracking-tight">
-            Contacter Alfa
+            {ui.contact.title}
           </h2>
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-secondary/80">
             <a
@@ -172,7 +170,7 @@ function ContactPanel({
             >
               <LocationIcon />
               <span>{seat.address}</span>
-              <span className="sr-only"> (ouvre Google Maps dans un nouvel onglet)</span>
+              <span className="sr-only"> {ui.contact.mapsNewTab}</span>
             </a>
             <a
               href={seat.phoneHref}
@@ -189,38 +187,38 @@ function ContactPanel({
           className="inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium text-secondary hover:bg-secondary/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
         >
           <CloseIcon />
-          <span>Fermer</span>
+          <span>{ui.common.close}</span>
         </button>
       </div>
       {/* Aucune soumission, aucun stockage, aucun message de succès. */}
       <form className="grid items-start gap-5 md:grid-cols-2 md:gap-8" onSubmit={blockSubmit} noValidate>
         <div className="grid gap-3">
           <label className="grid gap-1 text-sm font-medium" htmlFor={nameId}>
-            <span>Nom</span>
+            <span>{ui.contact.name}</span>
             <input id={nameId} name="name" type="text" autoComplete="name" className={fieldClassName} />
           </label>
           <label className="grid gap-1 text-sm font-medium" htmlFor={emailId}>
-            <span>E-mail</span>
+            <span>{ui.common.emailField}</span>
             <input id={emailId} name="email" type="email" autoComplete="email" inputMode="email" className={fieldClassName} />
           </label>
           <label className="grid gap-1 text-sm font-medium" htmlFor={phoneId}>
-            <span>Téléphone</span>
+            <span>{ui.common.phone}</span>
             <input id={phoneId} name="phone" type="tel" autoComplete="tel" inputMode="tel" className={fieldClassName} />
           </label>
           <label className="grid gap-1 text-sm font-medium" htmlFor={messageId}>
-            <span>Message</span>
-            <textarea id={messageId} name="message" rows={4} className={`${fieldClassName} min-h-24 resize-y`} />
+            <span>{ui.contact.message}</span>
+            <textarea id={messageId} name="message" rows={4} defaultValue={initialMessage} className={`${fieldClassName} min-h-24 resize-y`} />
           </label>
         </div>
         <div className="flex flex-col gap-4">
           <fieldset data-name="Intérêts" className="grid gap-2">
-            <legend className="text-sm font-semibold">Je suis intéressé par :</legend>
+            <legend className="text-sm font-semibold">{ui.contact.interestsLegend}</legend>
             <div className="grid gap-2">
-              {interestOptions.map((option) => {
-                const optionId = `${baseId}-${option.value}`;
+              {ui.contact.interests.map((option) => {
+                const optionId = `${baseId}-${option.id}`;
                 return (
                   <label
-                    key={option.value}
+                    key={option.id}
                     htmlFor={optionId}
                     className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border border-secondary/15 px-3 py-2 text-sm has-[:checked]:border-primary has-[:checked]:bg-primary/10"
                   >
@@ -228,7 +226,7 @@ function ContactPanel({
                       id={optionId}
                       name="interests"
                       type="checkbox"
-                      value={option.value}
+                      value={option.id}
                       className="size-5 shrink-0 accent-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
                     />
                     <span>{option.label}</span>
@@ -242,7 +240,7 @@ function ContactPanel({
             onClick={(event) => event.preventDefault()}
             className="group inline-flex min-h-11 w-fit items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-base font-semibold text-secondary hover:bg-primary-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
           >
-            <span>Envoyer</span>
+            <span>{ui.contact.send}</span>
             <SendArrowIcon />
           </button>
         </div>

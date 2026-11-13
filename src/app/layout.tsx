@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Inter, Outfit } from "next/font/google";
 import { CookieConsent } from "@/components/organisms/cookie-consent";
 import { NewsPrompt } from "@/components/organisms/news-prompt";
-import { SiteModsPanel } from "@/components/shared/site-mods/site-mods-panel";
+import { SiteModsPanel } from "@site-mods/site-mods-panel";
 import "./globals.css";
 
 const inter = Inter({

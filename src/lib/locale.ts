@@ -1,4 +1,6 @@
-export type Locale = "fr" | "en";
+import type { Lang } from "@/content/languages";
+
+export type Locale = Lang;
 
 export function localeFromPath(pathname: string): Locale {
   return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "fr";

@@ -1,45 +1,33 @@
 # Instructions projet pour les agents
 
-Garder ce fichier court. Le détail des profils est dans `docs/03-architecture/STACK_PROFILES.md`.
+Site d'Alfa (centre d'affaires à Rouen), qui remplace alfa.fr. Garder ce fichier court.
 
-## Sources de vérité
+## Mémoire du projet
 
-- Produit : `docs/00-discovery/PROJECT_BRIEF.md`, puis `docs/01-product/PRD.md`.
-- UX/UI : `docs/02-design/`.
-- Profil, architecture, ADR : `docs/03-architecture/`.
-- Données et API : `docs/04-data/`.
-- Tests, sécurité, livraison : `docs/05-quality/`, `docs/06-delivery/`.
-- Skills : `docs/00-discovery/SKILLS_SELECTION.md`.
-- Cadrage dans le chat : `/starter-kit`, puis `/starter-kit-build` après le dossier de décision.
-- ClickUp : `docs/06-delivery/CLICKUP_CONVENTION.md`, puis `docs/06-delivery/CLICKUP.md`. Création de tâches via `/clickup-from-context`, après prévisualisation du lot.
-- En cas de contradiction, la signaler avant d'agir.
+Elle est dans `.bframe/` :
 
-## Profil de référence
+1. Lire `.bframe/ETAT.md` d'abord.
+2. `.bframe/PROJET.md` pour le cap.
+3. `.bframe/DECISIONS.md` avant de trancher.
+4. `.bframe/references/design.md` et `.bframe/references/donnees.md` pour le détail.
 
-Next.js (App Router), TypeScript, Tailwind CSS, shadcn/ui si une bibliothèque de composants est utile, Supabase (Postgres, Auth), hébergement Vercel, suivi ClickUp.
+## Stack
 
-C'est le candidat de départ. Un autre profil se retient selon `STACK_PROFILES.md`, après validation humaine. Les fichiers réservés Next.js (`page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`, `not-found.tsx`, `robots.ts`, `sitemap.ts`) servent lorsque ce profil est retenu.
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4. Hébergement Vercel prévu. Base de données non choisie (Supabase pressenti, pas validé).
 
-Nommage : fichiers en kebab-case, composants exportés en PascalCase, fonctions en camelCase. Composants React partagés : atoms, molecules, organisms. Viser des composants lisibles, en pratique sous 150 lignes pour le profil React.
+## Nommage et structure
 
-## Mode de travail
+- Fichiers en kebab-case, composants exportés en PascalCase, fonctions en camelCase.
+- Composants sous environ 150 lignes.
+- Composants rangés par niveau : atoms, molecules, organisms. Dans le code actuel, les dossiers existants sont `organisms/`, `ui/` et `shared/` sous `src/components/`.
 
-1. Lire les règles et les documents de la tâche avant de modifier des fichiers.
-2. Pour une tâche non triviale, présenter le périmètre, les risques et les vérifications avant d'exécuter.
-3. Pendant un cadrage, rester dans la documentation. Pas d'installation de dépendances ni d'application.
-4. Distinguer faits, hypothèses et recommandations. Marquer `À VALIDER` ce qui n'est pas approuvé.
-5. Travailler par petites tranches. Après un changement de code, lancer les contrôles disponibles et rapporter le résultat réel.
-6. Demander un accord avant de verrouiller la stack, d'installer une dépendance non triviale, d'installer un skill global, de modifier un service externe, d'envoyer un lot ClickUp, d'appliquer une migration destructive, ou de déployer en dehors du workflow déjà validé.
+## Règles
 
-Le push sur `main` déclenche les workflows Vercel et Supabase lorsque l'application ou `supabase/config.toml` existe. C'est le déploiement convenu pour le profil de référence.
-
-## Qualité
-
-Simplicité, types utiles, responsabilités séparées. Traiter chargement, vide, erreur, permissions et cas limites. Vérifier la documentation officielle si une version ou une API peut avoir changé. Décision durable : ADR dans `docs/03-architecture/ADR/`.
-
-## Sécurité
-
-Pas de secret dans le dépôt, le chat ou les logs. Validation et autorisation côté serveur. RLS sur les tables Supabase exposées. `SUPABASE_SERVICE_ROLE_KEY` uniquement serveur. Entrées WordPress échappées et protégées par nonce et capability lorsque ce profil est actif.
+- Ni commit ni push sans demande explicite.
+- Pas de secret dans le dépôt.
+- Validation et autorisation côté serveur.
+- Français et anglais sur toutes les pages, langues gérées de façon générique.
+- Ne pas changer les couleurs, la typo ni le logo.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

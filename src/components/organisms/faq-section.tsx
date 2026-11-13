@@ -27,11 +27,11 @@ export function FaqSection({
           <span className="mb-2 block h-1 w-10 rounded-full bg-primary" aria-hidden="true" />
           <h2
             id={titleId}
-            className="font-heading text-2xl font-semibold tracking-tight text-secondary sm:text-3xl"
+            className="font-heading text-section font-semibold tracking-tight text-secondary"
           >
             {title}
           </h2>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-secondary/75">{subtitle}</p>
+          <p className="mt-2 max-w-sm text-base leading-relaxed text-secondary/75 lg:text-lg">{subtitle}</p>
         </div>
 
         <div
@@ -42,7 +42,7 @@ export function FaqSection({
             <details key={item.id} data-component="accordion-item" open={index === 0} className="group">
               <summary
                 data-name={item.question}
-                className={`flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-4 font-heading text-sm font-semibold text-secondary marker:content-none sm:text-base [&::-webkit-details-marker]:hidden ${focusRing}`}
+                className={`flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-4 font-heading text-base font-semibold text-secondary marker:content-none sm:text-lg [&::-webkit-details-marker]:hidden ${focusRing}`}
               >
                 <span>{item.question}</span>
                 <span

@@ -2,7 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ContactPicker } from "@/components/ui/contact-picker";
-import { openContactEventName } from "@/lib/open-contact-event";
+import { openContactEventName, readOpenContactMessage } from "@/lib/open-contact-event";
 
 type DockPlacement = {
   atBottom: boolean;
@@ -39,6 +39,7 @@ export function ContactDock() {
   const [open, setOpen] = useState(false);
   const [pinnedOpen, setPinnedOpen] = useState(false);
   const [tease, setTease] = useState(false);
+  const [initialMessage, setInitialMessage] = useState("");
   const [placement, setPlacement] = useState<DockPlacement>({
     atBottom: false,
     clearance: 0,
@@ -52,6 +53,7 @@ export function ContactDock() {
     if (!next) {
       pinnedRef.current = false;
       setPinnedOpen(false);
+      setInitialMessage("");
     }
   }
 
@@ -124,7 +126,8 @@ export function ContactDock() {
   }, []);
 
   useEffect(() => {
-    function onOpenContact() {
+    function onOpenContact(event: Event) {
+      setInitialMessage(readOpenContactMessage(event));
       pinnedRef.current = true;
       setPinnedOpen(true);
       setDockOpen(true);
@@ -150,6 +153,7 @@ export function ContactDock() {
           onOpenChange={setDockOpen}
           atBottom={atBottom}
           tease={tease}
+          initialMessage={initialMessage}
           onScrollTop={scrollToTop}
         />
       </div>
